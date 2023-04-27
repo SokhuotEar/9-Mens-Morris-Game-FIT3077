@@ -11,6 +11,6 @@ public class Player {
     }
 
     public MoveAction createMove() {
-        return new Move(this);
+        return new SlideMove(this);
     }
 }
