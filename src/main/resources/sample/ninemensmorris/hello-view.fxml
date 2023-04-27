@@ -53,5 +53,14 @@
       <Circle fx:id="BlackToken2" layoutX="878.0" layoutY="463.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
       <Circle fx:id="BlackToken3" layoutX="962.0" layoutY="468.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
       <Circle fx:id="BlackToken4" layoutX="798.0" layoutY="541.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="WhiteToken6" fill="WHITE" layoutX="954.0" layoutY="254.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="WhiteToken7" fill="WHITE" layoutX="798.0" layoutY="330.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="WhiteToken8" fill="WHITE" layoutX="878.0" layoutY="330.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="WhiteToken9" fill="WHITE" layoutX="954.0" layoutY="330.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BlackToken5" layoutX="878.0" layoutY="541.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BlackToken6" layoutX="962.0" layoutY="541.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BlackToken7" layoutX="798.0" layoutY="614.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BlackToken8" layoutX="878.0" layoutY="614.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BlackToken9" layoutX="962.0" layoutY="614.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>

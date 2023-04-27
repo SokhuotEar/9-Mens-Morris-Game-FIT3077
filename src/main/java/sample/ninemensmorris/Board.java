@@ -105,6 +105,18 @@ public class Board implements Initializable {
     @FXML
     private Shape WhiteToken5;
 
+    @FXML
+    private Shape WhiteToken6;
+
+    @FXML
+    private Shape WhiteToken7;
+
+    @FXML
+    private Shape WhiteToken8;
+
+    @FXML
+    private Shape WhiteToken9;
+
 //more tokens to be added here
 
 
@@ -120,6 +132,21 @@ public class Board implements Initializable {
 
     @FXML
     private Shape BlackToken4;
+
+    @FXML
+    private Shape BlackToken5;
+
+    @FXML
+    private Shape BlackToken6;
+
+    @FXML
+    private Shape BlackToken7;
+
+    @FXML
+    private Shape BlackToken8;
+
+    @FXML
+    private Shape BlackToken9;
 
 
     //more tokens to be added here
@@ -154,8 +181,8 @@ public class Board implements Initializable {
 
         });
 
-        tokens =new ArrayList<>(Arrays.asList(WhiteToken1,WhiteToken2, WhiteToken3, WhiteToken4, WhiteToken5,BlackToken1, BlackToken2
-        , BlackToken3, BlackToken4));
+        tokens =new ArrayList<>(Arrays.asList(WhiteToken1,WhiteToken2, WhiteToken3, WhiteToken4, WhiteToken5,WhiteToken6, WhiteToken7, WhiteToken8, WhiteToken9,
+                BlackToken1, BlackToken2, BlackToken3, BlackToken4,BlackToken5,BlackToken6,BlackToken7,BlackToken8,BlackToken9));
 
         tokens.forEach(shape -> {
             setupToken(shape);
