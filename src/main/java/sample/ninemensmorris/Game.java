@@ -20,4 +20,28 @@ public class Game {
         // game execute move
         move.executeMove(board, token, destination);
     }
+
+    public Boolean isGameOver(Game game){
+        //if game is over
+        return true;
+    }
+
+    public Player getWinner(Player player){
+        //get the winner
+        return player;
+    };
+
+    //iterate the turn of the game
+    public void iterateTurn(Player player, Token token){
+    }
+
+
+    //player click on option button
+    public void executeOptionButton(){
+    }
+
+    public void executeMove(){
+    }
+
+
 }
