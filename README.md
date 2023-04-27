@@ -1,5 +1,5 @@
 # FIT3077_project
-Please visit "FX" branch to see all the updates on the project
+****Please visit "FX" branch to see all the updates on the project****
 
 We used Scene Builder to design the GUI, you may download it on:
 https://gluonhq.com/products/scene-builder/
