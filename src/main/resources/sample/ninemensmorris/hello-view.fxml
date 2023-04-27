@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ninemensmorris.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ninemensmorris.Controller">
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: f1529111;">
          <children>
@@ -20,29 +20,38 @@
       <Line endY="199.0" layoutX="372.0" layoutY="611.0" startY="5.666664123535156" strokeWidth="5.0" />
       <Line endX="333.3333740234375" endY="-159.66665649414062" layoutX="385.0" layoutY="623.0" startX="137.0" startY="-159.00003051757812" strokeWidth="5.0" />
       <Line endX="337.0" endY="-159.66665649414062" layoutX="-115.0" layoutY="625.0" startX="140.0" startY="-159.66665649414062" strokeWidth="5.0" />
-      <Button fx:id="button1" layoutX="14.0" layoutY="106.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button1" />
-      <Button fx:id="button2" layoutX="362.0" layoutY="106.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button2" />
-      <Button fx:id="button3" layoutX="709.0" layoutY="106.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button3" />
-      <Button fx:id="button10" layoutX="12.0" layoutY="452.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button10" />
-      <Button fx:id="button5" layoutX="362.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button5" />
-      <Button fx:id="button15" layoutX="707.0" layoutY="452.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button15" />
-      <Button fx:id="button22" layoutX="12.0" layoutY="800.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button22" />
-      <Button fx:id="button23" layoutX="360.0" layoutY="800.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button23" />
-      <Button fx:id="button24" layoutX="707.0" layoutY="800.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button24" />
-      <Button fx:id="button4" layoutX="110.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button4" />
-      <Button fx:id="button6" layoutX="607.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button6" />
-      <Button fx:id="button20" layoutX="360.0" layoutY="702.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button20" />
-      <Button fx:id="button19" layoutX="108.0" layoutY="699.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button19" />
-      <Button fx:id="button21" layoutX="605.0" layoutY="702.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button21" />
-      <Button fx:id="button11" layoutX="111.0" layoutY="452.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button11" />
-      <Button fx:id="button14" layoutX="609.0" layoutY="452.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button14" />
-      <Button fx:id="button8" layoutX="362.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button8" />
-      <Button fx:id="button9" layoutX="505.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button9" />
-      <Button fx:id="button7" layoutX="212.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button7" />
-      <Button fx:id="button12" layoutX="212.0" layoutY="452.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button12" />
-      <Button fx:id="button16" layoutX="212.0" layoutY="601.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button16" />
-      <Button fx:id="button13" layoutX="509.0" layoutY="450.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button13" />
-      <Button fx:id="button18" layoutX="505.0" layoutY="601.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button18" />
-      <Button fx:id="button17" layoutX="357.0" layoutY="601.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #E5FFCC;" text="button17" />
+      <Circle fx:id="button1" fill="#d4f4bf" layoutX="23.0" layoutY="118.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button2" fill="#d4f4bf" layoutX="372.0" layoutY="118.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button3" fill="#d4f4bf" layoutX="722.0" layoutY="118.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button10" fill="#d4f4bf" layoutX="22.0" layoutY="460.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button5" fill="#d4f4bf" layoutX="370.0" layoutY="217.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button15" fill="#d4f4bf" layoutX="721.0" layoutY="460.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button22" fill="#d4f4bf" layoutX="23.0" layoutY="812.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button23" fill="#d4f4bf" layoutX="372.0" layoutY="812.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button24" fill="#d4f4bf" layoutX="722.0" layoutY="812.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button4" fill="#d4f4bf" layoutX="122.0" layoutY="217.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button6" fill="#d4f4bf" layoutX="620.0" layoutY="217.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button7" fill="#d4f4bf" layoutX="225.0" layoutY="317.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button11" fill="#d4f4bf" layoutX="121.0" layoutY="463.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button14" fill="#d4f4bf" layoutX="619.0" layoutY="463.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button20" fill="#d4f4bf" layoutX="371.0" layoutY="713.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button19" fill="#d4f4bf" layoutX="123.0" layoutY="713.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button21" fill="#d4f4bf" layoutX="621.0" layoutY="713.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button8" fill="#d4f4bf" layoutX="372.0" layoutY="317.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button9" fill="#d4f4bf" layoutX="518.0" layoutY="317.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button12" fill="#d4f4bf" layoutX="223.0" layoutY="463.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button13" fill="#d4f4bf" layoutX="516.0" layoutY="463.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button16" fill="#d4f4bf" layoutX="226.0" layoutY="614.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button18" fill="#d4f4bf" layoutX="519.0" layoutY="614.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="button17" fill="#d4f4bf" layoutX="373.0" layoutY="614.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="WhiteToken1" fill="WHITE" layoutX="798.0" layoutY="180.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BlackToken1" layoutX="798.0" layoutY="460.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="WhiteToken2" fill="WHITE" layoutX="878.0" layoutY="180.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="WhiteToken3" fill="WHITE" layoutX="954.0" layoutY="180.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="WhiteToken4" fill="WHITE" layoutX="798.0" layoutY="254.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="WhiteToken5" fill="WHITE" layoutX="878.0" layoutY="254.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BlackToken2" layoutX="878.0" layoutY="463.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BlackToken3" layoutX="962.0" layoutY="468.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
+      <Circle fx:id="BlackToken4" layoutX="798.0" layoutY="541.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>
