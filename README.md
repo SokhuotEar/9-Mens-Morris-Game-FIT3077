@@ -22,3 +22,9 @@ https://gluonhq.com/products/javafx/
 ![image-1.png](./image-1.png)
 
 6. The project and GUI should be able to run at your local device.
+
+
+
+## to play the game:
+1. click on the token you would like to move first
+2. click on the available position you would like to move token to
