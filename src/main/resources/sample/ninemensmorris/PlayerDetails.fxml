@@ -38,7 +38,7 @@
             <Font name="Arial" size="12.0" />
          </font>
       </Text>
-      <Button layoutX="418.0" layoutY="628.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="163.0" text="PLAY!" textFill="#ae925c">
+      <Button layoutX="418.0" layoutY="628.0" mnemonicParsing="false" onAction="#switchToGameScene" prefHeight="51.0" prefWidth="163.0" text="PLAY!" textFill="#ae925c">
          <font>
             <Font name="Algerian" size="22.0" />
          </font>
