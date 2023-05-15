@@ -6,19 +6,39 @@ public class Game {
     private Player winner;
     private Player player2;
     private Player player1;
+    private FxController controller;
+    private Display display;
 
+    public Game() {
+        // set up board
+        board = new Board();
+
+        // set up players
+        winner = null;
+        player2 = new Player();
+        player1 = new Player();
+        display = new Display();
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    private void setUpBoard()
+    {
+
+    }
 
     public void executeMove(Player player, Token token, Position destination)
     {
-        if (!board.validateMove(token, destination)) {
-            return;
-        }
+//        if (!board.validateMove(token, destination)) {
+//            return;
+//        }
+//
+//        //player creates move
+//        MoveAction move = player.createMove();
 
-        //player creates move
-        MoveAction move = player.createMove();
 
-        // game execute move
-        move.executeMove(board, token, destination);
     }
 
     public Boolean isGameOver(Game game){

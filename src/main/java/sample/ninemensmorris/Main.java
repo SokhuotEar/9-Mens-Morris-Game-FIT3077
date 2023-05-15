@@ -11,7 +11,6 @@ import java.io.IOException;
  */
 public class Main extends Application {
 
-
     /**
      * Game Instance
      */
@@ -40,6 +39,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+
         launch(args);
     }
 }

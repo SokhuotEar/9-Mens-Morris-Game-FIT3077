@@ -3,7 +3,12 @@ package sample.ninemensmorris;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Token {
+import javafx.scene.shape.Shape;
+
+public class Token implements HasShape {
+
+    private Shape shape;
+
     private TokenColour colour;
     private List<Capability> items = new ArrayList<>();
 
@@ -21,5 +26,23 @@ public class Token {
     public TokenColour getColour() {
         return colour;
     }
+
+    public Token(Shape shape, TokenColour colour, Position position) {
+        this.shape = shape;
+        this.colour = colour;
+        this.position = position;
+    }
+
+    @Override
+    public Shape getShape() {
+        return shape;
+    }
+
+    @Override
+    public void setShape(Shape shape) {
+        this.shape = shape;
+    }
+
+
 }
 
