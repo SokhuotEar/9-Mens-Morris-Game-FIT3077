@@ -15,7 +15,7 @@
             <Font size="45.0" />
          </font>
       </Text>
-      <Button layoutX="367.0" layoutY="363.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="265.0" text="Play">
+      <Button layoutX="367.0" layoutY="363.0" mnemonicParsing="false" onAction="#switchToPlayerDetailScene" prefHeight="80.0" prefWidth="265.0" text="Play">
          <font>
             <Font name="Algerian" size="26.0" />
          </font>
