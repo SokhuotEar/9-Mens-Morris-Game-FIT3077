@@ -53,6 +53,7 @@ public class Game {
     }
 
 
+    // move to Player detail scene button clicked
     public void switchToPlayerDetailScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("PlayerDetails.fxml"));
         Scene scene = new Scene(root);
