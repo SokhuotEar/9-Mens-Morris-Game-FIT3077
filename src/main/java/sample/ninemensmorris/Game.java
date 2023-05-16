@@ -17,6 +17,7 @@ public class Game {
     private Player player1;
     private FxController controller;
     private Display display;
+    private int turn = 0;
 
     public Game() {
         // set up board
@@ -24,8 +25,8 @@ public class Game {
 
         // set up players
         winner = null;
-        player2 = new Player();
-        player1 = new Player();
+        player2 = new Player("Player2", TokenColour.BLACK);
+        player1 = new Player("Player1", TokenColour.WHITE);
         display = new Display();
     }
 
@@ -33,21 +34,55 @@ public class Game {
         return board;
     }
 
+
     private void setUpBoard()
     {
 
     }
 
-    public void executeMove(Player player, Token token, Position destination)
+
+
+    public Player getPlayerTurn()
     {
-//        if (!board.validateMove(token, destination)) {
-//            return;
-//        }
-//
-//        //player creates move
-//        MoveAction move = player.createMove();
+        if (turn % 2 == 0)
+        {
+            return player1;
+        }
+        else
+        {
+            return player2;
+        }
+    }
+
+    public void iterateTurn()
+    {
+        turn++;
+    }
 
 
+
+    public boolean executeMove(Token token, Position destination)
+    {
+        // get the player making the move
+        Player currentPlayer = getPlayerTurn();
+
+        //verify if it is the correct turn
+        if (currentPlayer.getTokenColour() != token.getColour())
+        {
+            return false;
+        }
+
+        // current player create a move
+
+
+
+
+
+
+
+        display.displayMoveToken(token.getShape(), destination.getShape());
+        iterateTurn();
+        return true;
     }
 
     public Boolean isGameOver(Game game){

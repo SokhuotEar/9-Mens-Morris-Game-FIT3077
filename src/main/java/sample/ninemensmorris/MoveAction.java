@@ -12,7 +12,7 @@ public abstract class MoveAction {
     }
 
     /** executes the move **/
-    public boolean executeMove(FxController board, Token token, Position endingLocation)
+    public boolean applyMove(Board board, Token token, Position endingLocation)
     {
         // input validation
         Objects.requireNonNull(token);
@@ -22,5 +22,12 @@ public abstract class MoveAction {
         token.setPosition(endingLocation);
         return true;
     }
+
+
+    public boolean validateMove(Board board, Token token, Position endingLocation)
+    {
+        return false;
+    }
+
 
 }

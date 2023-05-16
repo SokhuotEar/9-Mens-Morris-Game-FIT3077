@@ -246,11 +246,13 @@ public class FxController implements Initializable {
                 Position destination = (Position) instanceToShapeMap.get(shape);
 
                 // tell game to execute move
-                game.executeMove(null, token, destination);
-
-                displayMoveToken(currentToken, LayoutX, LayoutY);
+                boolean success = game.executeMove(token, destination);
 
                 currentToken = null;
+//
+//                displayMoveToken(currentToken, LayoutX, LayoutY);
+
+
             }
             shape.setDisable(false);
             //checkIfGameIsOver();
@@ -280,11 +282,9 @@ public class FxController implements Initializable {
 
     }
 
-    public void displayMoveToken(Shape shape, int LayoutX, int LayoutY){
-            shape.setLayoutX(LayoutX);
-            shape.setLayoutY(LayoutY);
-            currentToken = null;
-    }
+
+
+
 
 
 
