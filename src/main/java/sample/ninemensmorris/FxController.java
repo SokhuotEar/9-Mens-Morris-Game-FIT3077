@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,6 +17,14 @@ public class FxController implements Initializable {
 
     @FXML
     private Label MillText;
+
+    @FXML
+    private Text player1Text;
+
+    @FXML
+    private Text player2Text;
+
+    PlayerNameHolder data = PlayerNameHolder.getInstance();
 
     // buttons represent positions
     @FXML
@@ -228,6 +237,10 @@ public class FxController implements Initializable {
 
         //hide Mill text
         MillText.setVisible(false);
+
+        //Update Player name
+        player1Text.setText(data.getPlayerName1());
+        player2Text.setText(data.getPlayerName2());
 
     }
     private void setupPosition(Shape shape) {

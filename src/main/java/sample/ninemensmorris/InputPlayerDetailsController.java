@@ -18,7 +18,11 @@ public class InputPlayerDetailsController {
 
     @FXML
     private TextField player2;
+
+    PlayerNameHolder data = PlayerNameHolder.getInstance();
     public void switchToGameScene(ActionEvent event) throws IOException {
+        data.setUserName1(player1.getText());
+        data.setUserName2(player2.getText());
         Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         Scene scene = new Scene(root);
 

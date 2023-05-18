@@ -67,12 +67,12 @@
       <Circle fx:id="BlackToken7" layoutX="803.0" layoutY="707.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
       <Circle fx:id="BlackToken8" layoutX="870.0" layoutY="707.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
       <Circle fx:id="BlackToken9" layoutX="937.0" layoutY="707.0" radius="22.0" stroke="#d0d0d0" strokeType="OUTSIDE" strokeWidth="2.0" />
-      <Text layoutX="779.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" wrappingWidth="64.8033447265625">
+      <Text fx:id="player1Text" layoutX="779.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" wrappingWidth="64.8033447265625">
          <font>
             <Font name="Amatic SC Regular" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="779.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" wrappingWidth="64.8033447265625">
+      <Text fx:id="player2Text" layoutX="779.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" wrappingWidth="64.8033447265625">
          <font>
             <Font name="Amatic SC Regular" size="30.0" />
          </font>
@@ -106,5 +106,6 @@
             <Font size="26.0" />
          </font>
       </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="89.0" layoutX="874.0" layoutY="387.0" stroke="BLACK" strokeType="INSIDE" width="87.0" />
    </children>
 </AnchorPane>
