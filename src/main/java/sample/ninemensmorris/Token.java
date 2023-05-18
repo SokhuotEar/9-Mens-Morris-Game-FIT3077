@@ -22,7 +22,9 @@ public class Token implements HasShape {
         this.position = position;
     }
 
-
+    public List<Capability> getCapabilities() {
+        return capabilities;
+    }
 
     public TokenColour getColour() {
         return colour;

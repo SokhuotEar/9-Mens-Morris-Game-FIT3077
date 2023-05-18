@@ -17,6 +17,7 @@ public class InitialPlacingMove extends MoveAction {
         if (token.getPosition() == null) {
             return true;
         }
+        System.out.println("error in initialplacement move");
         return false;
     }
 }

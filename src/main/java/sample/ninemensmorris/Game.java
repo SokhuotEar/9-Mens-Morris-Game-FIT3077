@@ -15,7 +15,6 @@ public class Game {
     private Player winner;
     private Player player2;
     private Player player1;
-    private FxController controller;
     private Display display;
     private int turn = 0;
     private GameStage gameStage = GameStage.INITIAL_PLACEMENT;
@@ -58,7 +57,8 @@ public class Game {
     public void iterateTurn()
     {
         turn++;
-        manageGameStage();
+        updateGameStage();
+
     }
 
 
@@ -87,12 +87,19 @@ public class Game {
             success = move.applyMove(board, token, destination);
         }
 
+        if (board.determineMill(destination, token))
+        {
+            System.out.println("Mill");
+        }
+
         if (success)
         {
-            display.displayMoveToken(token.getShape(), destination.getShape());
             iterateTurn();
+            display.displayMoveToken(token.getShape(), destination.getShape());
             return true;
         }
+
+
 
         return success;
     }
@@ -111,15 +118,12 @@ public class Game {
         return player;
     };
 
-
-
-
     //player click on option button
     public void executeOptionButton(){
     }
 
 
-    public void manageGameStage()
+    public void updateGameStage()
     {
         if (gameStage == GameStage.INITIAL_PLACEMENT)
         {
@@ -133,7 +137,7 @@ public class Game {
 
         if (gameStage == GameStage.SLIDING_MOVE)
         {
-
+            // detect whether it is jump stage
         }
 
     }

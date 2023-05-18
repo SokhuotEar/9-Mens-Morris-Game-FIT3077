@@ -1,6 +1,9 @@
 package sample.ninemensmorris;
+import java.util.List;
 
+import javafx.geometry.Pos;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Board {
@@ -268,7 +271,7 @@ public class Board {
                 return false;
             }
         }
-        for (Token token: whiteTokens)
+        for (Token token: blackTokens)
         {
             if (token.getPosition() == null) {
                 return false;
@@ -277,9 +280,92 @@ public class Board {
         return true;
     }
 
-    public boolean determineMill(Position position)
+    public boolean determineMill(Position position, Token token)
     {
-        return false;
+        // get neighbours
+        List<Position> rowNeighbourList = new ArrayList<>();
+        List<Position> columnNeighbourList = new ArrayList<>();
+
+        // in x direction
+        Position left = position.getLeftNeighbour();
+        while (left != null)
+        {
+            rowNeighbourList.add(left);
+            left = left.getLeftNeighbour();
+        }
+
+        Position right = position.getRightNeighbour();
+        {
+            while (right != null)
+            {
+                rowNeighbourList.add(right);
+                right = right.getRightNeighbour();
+            }
+        }
+
+        // in y direction
+        Position up = position.getTopNeighbour();
+        while (up != null)
+        {
+            columnNeighbourList.add(up);
+            up = up.getTopNeighbour();
+        }
+
+        Position down = position.getBottomNeighbour();
+        {
+            while (down != null)
+            {
+                columnNeighbourList.add(down);
+                down = down.getBottomNeighbour();
+            }
+        }
+
+        // go through the row and column to see if a mill is formed
+        boolean rowMill = true;
+        boolean columnMill = true;
+
+        // go through the row and column to see if a mill is formed
+        for (Position neighbour: rowNeighbourList)
+        {
+            if (token.getColour() == TokenColour.BLACK)
+            {
+                if (!isBlackTokenAt(neighbour))
+                {
+                    rowMill = false;
+                }
+            }
+            else if (token.getColour() == TokenColour.WHITE)
+            {
+                if (!isWhiteTokenAt(neighbour))
+                {
+                    rowMill = false;
+                }
+            }
+        }
+
+        for (Position neighbour: columnNeighbourList)
+        {
+            if (token.getColour() == TokenColour.BLACK)
+            {
+                if (!isBlackTokenAt(neighbour))
+                {
+                    columnMill = false;
+                }
+            }
+            else if (token.getColour() == TokenColour.WHITE)
+            {
+                if (!isWhiteTokenAt(neighbour))
+                {
+                    columnMill = false;
+                }
+            }
+        }
+
+        if (rowMill || columnMill == true)
+        {
+            return true;
+        }
+        return rowMill || columnMill;
     }
 
 
@@ -300,10 +386,12 @@ public class Board {
         return null; // Element not found
     }
 
-    public void getPositionsAt()
+    public void detectJumpStage()
     {
 
+
     }
+
 
 
 }
