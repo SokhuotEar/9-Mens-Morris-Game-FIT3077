@@ -18,6 +18,7 @@ public class Game {
     private FxController controller;
     private Display display;
     private int turn = 0;
+    private GameStage gameStage = GameStage.INITIAL_PLACEMENT;
 
     public Game() {
         // set up board
@@ -57,6 +58,7 @@ public class Game {
     public void iterateTurn()
     {
         turn++;
+        manageGameStage();
     }
 
 
@@ -72,22 +74,36 @@ public class Game {
             return false;
         }
 
-        // current player create a move
+        // get game stage
+        boolean success = false;
+        if (gameStage == GameStage.INITIAL_PLACEMENT) {
+            InitialPlacingMove move = new InitialPlacingMove(currentPlayer);
+            success = move.applyMove(board, token,destination);
 
+        }
 
+        else if (gameStage == GameStage.SLIDING_MOVE) {
+            SlideMove move = new SlideMove(currentPlayer);
+            success = move.applyMove(board, token, destination);
+        }
 
+        if (success)
+        {
+            display.displayMoveToken(token.getShape(), destination.getShape());
+            iterateTurn();
+            return true;
+        }
 
-
-
-
-        display.displayMoveToken(token.getShape(), destination.getShape());
-        iterateTurn();
-        return true;
+        return success;
     }
 
     public Boolean isGameOver(Game game){
         //if game is over
-        return true;
+        if (gameStage == GameStage.FINISHED)
+        {
+            return true;
+        }
+        return false;
     }
 
     public Player getWinner(Player player){
@@ -95,18 +111,32 @@ public class Game {
         return player;
     };
 
-    //iterate the turn of the game
-    public void iterateTurn(Player player, Token token){
-    }
+
 
 
     //player click on option button
     public void executeOptionButton(){
     }
 
-    public void executeMove(){
-    }
 
+    public void manageGameStage()
+    {
+        if (gameStage == GameStage.INITIAL_PLACEMENT)
+        {
+            // check if all the tokens have been placed
+            if (board.haveAllTokenBeenPlaced())
+            {
+                gameStage = GameStage.SLIDING_MOVE;
+                return;
+            }
+        }
+
+        if (gameStage == GameStage.SLIDING_MOVE)
+        {
+
+        }
+
+    }
 
     // move to Player detail scene button clicked
     public void switchToPlayerDetailScene(ActionEvent event) throws IOException {

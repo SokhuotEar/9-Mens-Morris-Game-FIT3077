@@ -20,4 +20,8 @@ public class Position implements HasShape{
     public void setShape(Shape shape) {
         this.shape = shape;
     }
+
+    public void setNeighbours(Position[] neighbours) {
+        this.neighbours = neighbours;
+    }
 }

@@ -10,7 +10,7 @@ public class Token implements HasShape {
     private Shape shape;
 
     private TokenColour colour;
-    private List<Capability> items = new ArrayList<>();
+    private List<Capability> capabilities = new ArrayList<>();
 
     private Position position;
 
