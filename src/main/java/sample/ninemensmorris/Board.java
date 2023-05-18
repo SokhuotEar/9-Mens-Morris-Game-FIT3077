@@ -280,6 +280,45 @@ public class Board {
         return true;
     }
 
+    public int haveThreeTokenLeftOnBoard()
+    {
+        int output;
+        //0 -> both white and black token have three pieces left
+        // 1 -> white token has three pieces left
+        // 2-> black token has three pieces left
+        // 3 -> both black and white token have more than three pieces left
+
+        int NumberofWhiteToken=0;
+        int NumberofBlackToken=0;
+        for (Token token: whiteTokens)
+        {
+            if (token.getPosition() != null) {
+                NumberofWhiteToken++;
+            }
+        }
+
+        for (Token token: blackTokens)
+        {
+            if (token.getPosition() != null) {
+                NumberofBlackToken++;
+            }
+        }
+        if(NumberofWhiteToken ==3 && NumberofBlackToken ==3){
+            output = 0;
+            return output;
+        }
+        if(NumberofWhiteToken ==3){
+            output= 1;
+            return output;
+        }
+        if(NumberofBlackToken ==3){
+            output =2;
+            return output;
+        }
+        output =3;
+        return output;
+    }
+
     public boolean determineMill(Position position, Token token)
     {
         // get neighbours

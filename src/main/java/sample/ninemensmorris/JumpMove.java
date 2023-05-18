@@ -7,12 +7,12 @@ public class JumpMove extends MoveAction{
     }
 
 
-//    @Override
-//    public boolean validateMove(Board board, Token token, Position endingLocation) {
-//        if (token.getCapabilities().contains(TokenCapability.JUMP))
-//        {
-//            return true;
-//        }
-//        return false;
-//    }
+    @Override
+    public boolean validateMove(Board board, Token token, Position endingLocation) {
+        if (token.getPosition() != null) {
+            return true;
+        }
+        System.out.println("error in initialplacement move");
+        return false;
+    }
 }

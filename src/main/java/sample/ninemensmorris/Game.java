@@ -84,9 +84,37 @@ public class Game {
         }
 
         else if (gameStage == GameStage.SLIDING_MOVE) {
-            SlideMove move = new SlideMove(currentPlayer);
-            success = move.applyMove(board, token, destination);
+
+            if(token.getColour() == TokenColour.WHITE){
+                if (board.haveThreeTokenLeftOnBoard()== 1|| board.haveThreeTokenLeftOnBoard()== 0)
+                {
+                    // white token can do jump move
+                    JumpMove move = new JumpMove(currentPlayer);
+                    success = move.applyMove(board, token, destination);
+                }
+                else {
+                    SlideMove move = new SlideMove(currentPlayer);
+                    success = move.applyMove(board, token, destination);
+                }
+
+            }
+
+            if(token.getColour() == TokenColour.BLACK){
+                if (board.haveThreeTokenLeftOnBoard()== 2 || board.haveThreeTokenLeftOnBoard()== 0)
+                {
+                    // white token can do jump move
+                    JumpMove move = new JumpMove(currentPlayer);
+                    success = move.applyMove(board, token, destination);
+                }
+                else {
+                    SlideMove move = new SlideMove(currentPlayer);
+                    success = move.applyMove(board, token, destination);
+                }
+
+            }
+
         }
+
 
         if (board.determineMill(destination, token))
         {
@@ -143,7 +171,8 @@ public class Game {
 
         if (gameStage == GameStage.SLIDING_MOVE)
         {
-            // detect whether it is jump stage
+
+
         }
 
     }
