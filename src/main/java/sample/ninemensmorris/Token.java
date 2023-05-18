@@ -23,6 +23,7 @@ public class Token implements HasShape {
     }
 
 
+
     public TokenColour getColour() {
         return colour;
     }
