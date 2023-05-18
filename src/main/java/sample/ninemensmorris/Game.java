@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -63,7 +64,7 @@ public class Game {
 
 
 
-    public boolean executeMove(Token token, Position destination)
+    public boolean executeMove(Token token, Position destination, Label MillText)
     {
         // get the player making the move
         Player currentPlayer = getPlayerTurn();
@@ -90,6 +91,11 @@ public class Game {
         if (board.determineMill(destination, token))
         {
             System.out.println("Mill");
+            MillText.setVisible(true);
+
+
+            //TO DO: remove the Mill text
+//            MillText.setVisible(false);
         }
 
         if (success)

@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 public class FxController implements Initializable {
 
     @FXML
-    private Label welcomeText;
+    private Label MillText;
 
     // buttons represent positions
     @FXML
@@ -168,11 +168,6 @@ public class FxController implements Initializable {
 
     private Shape currentToken =null;
 
-//
-//    @FXML
-//    protected void onHelloButtonClick() {
-//        welcomeText.setText("Welcome to JavaFX Application!");
-//    }
 
     private HashMap<Shape, HasShape> instanceToShapeMap = new HashMap<>();
 
@@ -230,6 +225,10 @@ public class FxController implements Initializable {
             instanceToShapeMap.put(tokens.get(i), blackTokens[i-9]);
         }
 
+
+        //hide Mill text
+        MillText.setVisible(false);
+
     }
     private void setupPosition(Shape shape) {
         // set on-click event
@@ -246,7 +245,7 @@ public class FxController implements Initializable {
                 Position destination = (Position) instanceToShapeMap.get(shape);
 
                 // tell game to execute move
-                boolean success = game.executeMove(token, destination);
+                boolean success = game.executeMove(token, destination, MillText);
 
                 currentToken = null;
 //

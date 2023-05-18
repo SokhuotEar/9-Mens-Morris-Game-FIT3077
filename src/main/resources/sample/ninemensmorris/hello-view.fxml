@@ -101,5 +101,10 @@
             </DropShadow>
          </effect>
       </Button>
+      <Label fx:id="MillText" layoutX="90.0" layoutY="843.0" text="Mill! please remove a token of your opponent!" textFill="#4caa24">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

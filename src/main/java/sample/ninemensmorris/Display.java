@@ -9,4 +9,10 @@ public class Display {
         tokenShape.setLayoutY(positionShape.getLayoutY());
     }
 
+//    public void displayRemoveToken(Shape token){
+//        token.setLayoutX(874);
+//        token.setLayoutY(387);
+//        token.removeEventHandler();
+//    }
+
 }

@@ -23,12 +23,12 @@
             <Font size="29.0" />
          </font>
       </Text>
-      <TextField layoutX="458.0" layoutY="354.0" prefHeight="32.0" prefWidth="277.0">
+      <TextField fx:id="player1" layoutX="458.0" layoutY="354.0" prefHeight="32.0" prefWidth="277.0">
          <font>
             <Font size="29.0" />
          </font>
       </TextField>
-      <TextField layoutX="458.0" layoutY="466.0" prefHeight="32.0" prefWidth="277.0">
+      <TextField fx:id="player2" layoutX="458.0" layoutY="466.0" prefHeight="32.0" prefWidth="277.0">
          <font>
             <Font size="29.0" />
          </font>
