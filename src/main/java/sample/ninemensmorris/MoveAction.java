@@ -2,7 +2,7 @@ package sample.ninemensmorris;
 
 import java.util.Objects;
 
-public class MoveAction {
+public abstract class MoveAction {
 
     protected Player player;
     protected String errorMessage = null;
@@ -19,7 +19,7 @@ public class MoveAction {
         Objects.requireNonNull(token);
 //        Objects.requireNonNull(endingLocation);
 
-        if (validateMove(board, token, endingLocation) == true && token.isTokenPlayable())
+        if (validateMove(board, token, endingLocation) && token.isTokenPlayable())
         {
             // execute move
             token.setPosition(endingLocation);
@@ -33,7 +33,7 @@ public class MoveAction {
 
     public boolean validateMove(Board board, Token token, Position endingLocation)
     {
-        return true;
+        return false;
     }
 
     public String getErrorMessage()

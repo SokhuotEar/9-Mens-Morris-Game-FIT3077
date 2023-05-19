@@ -395,6 +395,10 @@ public class Board {
     public boolean hasAvailableMove(TokenColour tokenColour) {
         if (tokenColour == TokenColour.WHITE) {
             for (Token token : getPlayableWhiteToken()) {
+                if (token.getCapabilities().contains(TokenCapability.JUMP))
+                {
+                    return true;
+                }
                 Position position = token.getPosition();
                 for (Position neighbour : position.getNeighbours()) {
                     if (!isWhiteTokenAt(neighbour) && !isBlackTokenAt(neighbour)) {
@@ -407,6 +411,10 @@ public class Board {
 
         else if (tokenColour == TokenColour.BLACK) {
             for (Token token : getPlayableBlackToken()) {
+                if (token.getCapabilities().contains(TokenCapability.JUMP))
+                {
+                    return true;
+                }
                 Position position = token.getPosition();
                 for (Position neighbour : position.getNeighbours()) {
                     if (!isWhiteTokenAt(neighbour) && !isBlackTokenAt(neighbour)) {
@@ -419,6 +427,5 @@ public class Board {
 
         return false;
     }
-
 
 }
