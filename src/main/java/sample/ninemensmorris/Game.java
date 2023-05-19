@@ -80,6 +80,11 @@ public class Game {
             return "Wrong turn!";
         }
 
+        if (turn == 6)
+        {
+            int a = 1;
+        }
+
         // get game stage
         boolean success = false;
         MoveAction move = null;
@@ -133,8 +138,7 @@ public class Game {
 
 
 
-        if (destination != null)
-        {
+        if (destination != null && success) {
             if (board.determineMill(destination, token)) {
                 hasMill = true;
                 System.out.println("Mill");
@@ -142,10 +146,7 @@ public class Game {
                 MillButton.setVisible(true);
 
             }
-            if (success)
-            {
-                display.displayMoveToken(token.getShape(), destination.getShape());
-            }
+            display.displayMoveToken(token.getShape(), destination.getShape());
 
         }
         //TO DO: remove the Mill text
@@ -156,8 +157,6 @@ public class Game {
             iterateTurn();
             return null;
         }
-
-
 
         return move.getErrorMessage();
     }

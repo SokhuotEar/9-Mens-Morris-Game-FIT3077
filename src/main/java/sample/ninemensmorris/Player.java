@@ -24,7 +24,5 @@ public class Player {
         return "token name";
     }
 
-    public MoveAction createMove() {
-        return new MoveAction(this);
-    }
+
 }
