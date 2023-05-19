@@ -17,7 +17,7 @@ public class InitialPlacingMove extends MoveAction {
         if (token.getPosition() == null) {
             return true;
         }
-        System.out.println("error in initialplacement move");
+        System.out.println("wrong placing move");
         return false;
     }
 }

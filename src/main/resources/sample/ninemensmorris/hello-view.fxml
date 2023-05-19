@@ -101,11 +101,12 @@
             </DropShadow>
          </effect>
       </Button>
-      <Label fx:id="MillText" layoutX="90.0" layoutY="843.0" text="Mill! please remove a token of your opponent!" textFill="#4caa24">
+      <Label fx:id="MillText" layoutX="90.0" layoutY="843.0" text="Mill! Click button to remove a token of your opponent!" textFill="#4caa24">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="89.0" layoutX="874.0" layoutY="387.0" stroke="BLACK" strokeType="INSIDE" width="87.0" />
+      <Rectangle fx:id="MillButton" arcHeight="5.0" arcWidth="5.0" fill="#5dd245" height="48.0" layoutX="272.0" layoutY="905.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
    </children>
 </AnchorPane>

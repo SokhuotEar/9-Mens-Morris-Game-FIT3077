@@ -1,18 +1,21 @@
 package sample.ninemensmorris;
 
-public class JumpMove extends MoveAction{
-    protected Player player;
-    public JumpMove(Player player) {
+public class RemoveMove extends MoveAction {
+    /**
+     * constructor
+     *
+     * @param player
+     **/
+    public RemoveMove(Player player) {
         super(player);
     }
-
 
     @Override
     public boolean validateMove(Board board, Token token, Position endingLocation) {
         if (token.getPosition() != null) {
             return true;
         }
-        System.out.println("Wrong Jump move");
+        System.out.println("Error! It's a Mill Move");
         return false;
     }
 }

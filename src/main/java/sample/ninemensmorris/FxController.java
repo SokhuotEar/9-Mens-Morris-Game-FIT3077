@@ -2,11 +2,14 @@ package sample.ninemensmorris;
 import java.util.HashMap;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
+import org.controlsfx.control.action.Action;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,6 +26,9 @@ public class FxController implements Initializable {
 
     @FXML
     private Text player2Text;
+
+    @FXML
+    private Shape MillButton;
 
     PlayerNameHolder data = PlayerNameHolder.getInstance();
 
@@ -184,7 +190,7 @@ public class FxController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         buttons =new ArrayList<>(Arrays.asList(button1,button2, button3, button4, button5, button6, button7, button8, button9, button10
-        , button11, button12, button13, button14, button15, button16, button17, button18, button19, button20, button21, button22, button23, button24));
+        , button11, button12, button13, button14, button15, button16, button17, button18, button19, button20, button21, button22, button23, button24,MillButton));
 
         buttons.forEach(shape -> {
             setupPosition(shape);
@@ -235,8 +241,13 @@ public class FxController implements Initializable {
         }
 
 
+
+
         //hide Mill text
         MillText.setVisible(false);
+
+        //hide Mill Button
+        MillButton.setVisible(false);
 
         //Update Player name
         player1Text.setText(data.getPlayerName1());
@@ -258,7 +269,7 @@ public class FxController implements Initializable {
                 Position destination = (Position) instanceToShapeMap.get(shape);
 
                 // tell game to execute move
-                boolean success = game.executeMove(token, destination, MillText);
+                boolean success = game.executeMove(token, destination, MillText, MillButton);
 
                 currentToken = null;
 //
@@ -272,18 +283,7 @@ public class FxController implements Initializable {
 
     }
 
-    //check colour of token
 
-//    public String checkColour(Shape token){
-//        if(token.getFill() == Color.WHITE){
-//            return "WHITE";
-//        }
-//        else {
-//            return "BLACK";
-//        }
-//
-//
-//    }
 
     private void setupToken(Shape shape) {
         shape.setOnMouseClicked(mouseEvent -> {
@@ -293,6 +293,8 @@ public class FxController implements Initializable {
         });
 
     }
+
+
 
 
 

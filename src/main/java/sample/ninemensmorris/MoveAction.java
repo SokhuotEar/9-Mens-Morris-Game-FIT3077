@@ -16,7 +16,7 @@ public class MoveAction {
     {
         // input validation
         Objects.requireNonNull(token);
-        Objects.requireNonNull(endingLocation);
+//        Objects.requireNonNull(endingLocation);
 
         if (validateMove(board, token, endingLocation) == true)
         {

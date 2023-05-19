@@ -5,7 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -64,7 +66,7 @@ public class Game {
 
 
 
-    public boolean executeMove(Token token, Position destination, Label MillText)
+    public boolean executeMove(Token token, Position destination, Label MillText, Shape MillButton)
     {
         // get the player making the move
         Player currentPlayer = getPlayerTurn();
@@ -115,11 +117,26 @@ public class Game {
 
         }
 
+        else if(gameStage == GameStage.REMOVE_MOVE){
+            RemoveMove move = new RemoveMove(currentPlayer);
+            success = move.applyMove(board, token,destination);
+            if(success){
+                display.displayRemoveToken(token.getShape());
+                gameStage= GameStage.INITIAL_PLACEMENT;
+                MillButton.setVisible(false);
+                MillText.setVisible(false);
+                return true;
+            }
+
+        }
 
         if (board.determineMill(destination, token))
         {
             System.out.println("Mill");
             MillText.setVisible(true);
+            MillButton.setVisible(true);
+            gameStage = GameStage.REMOVE_MOVE;
+
 
 
             //TO DO: remove the Mill text
@@ -128,15 +145,18 @@ public class Game {
 
         if (success)
         {
-            iterateTurn();
-            display.displayMoveToken(token.getShape(), destination.getShape());
-            return true;
+                iterateTurn();
+                display.displayMoveToken(token.getShape(), destination.getShape());
+                return true;
         }
+
+
 
 
 
         return success;
     }
+
 
     public Boolean isGameOver(Game game){
         //if game is over
@@ -169,7 +189,7 @@ public class Game {
             }
         }
 
-        if (gameStage == GameStage.SLIDING_MOVE)
+        if (gameStage == GameStage.REMOVE_MOVE)
         {
 
 
