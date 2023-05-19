@@ -61,27 +61,35 @@ public class Game {
     {
         turn++;
         updateGameStage();
+    }
 
+    public String getDisplayTurn()
+    {
+        return getPlayerTurn().getName() + "'s turn";
     }
 
 
+    public String executeMove(Token token, Position destination, Label MillText, Shape MillButton) {
 
-
-
-    public boolean executeMove(Token token, Position destination, Label MillText, Shape MillButton) {
+        System.out.println(turn);
         // get the player making the move
         Player currentPlayer = getPlayerTurn();
 
         //verify if it is the correct turn
         if (currentPlayer.getTokenColour() != token.getColour()) {
-            return false;
+            return "Wrong turn!";
         }
 
         // get game stage
         boolean success = false;
+        MoveAction move = null;
 
-        if (hasMill) {
-            RemoveMove move = new RemoveMove(currentPlayer);
+        if (gameStage == GameStage.FINISHED)
+        {
+            return winner.getName();
+        }
+        else if (hasMill) {
+            move = new RemoveMove(currentPlayer);
             success = move.applyMove(board, token, destination);
             if (success) {
                 token.removeCapability(TokenCapability.PLAYABLE);
@@ -89,11 +97,10 @@ public class Game {
                 MillButton.setVisible(false);
                 MillText.setVisible(false);
                 hasMill = false;
-                return true;
+                turn++;
             }
-
         } else if (gameStage == GameStage.INITIAL_PLACEMENT) {
-            InitialPlacingMove move = new InitialPlacingMove(currentPlayer);
+            move = new InitialPlacingMove(currentPlayer);
             success = move.applyMove(board, token, destination);
 
         } else if (gameStage == GameStage.SLIDING_MOVE) {
@@ -101,10 +108,10 @@ public class Game {
             if (token.getColour() == TokenColour.WHITE) {
                 if (board.haveThreeTokenLeftOnBoard() == 1 || board.haveThreeTokenLeftOnBoard() == 0) {
                     // white token can do jump move
-                    JumpMove move = new JumpMove(currentPlayer);
+                    move = new JumpMove(currentPlayer);
                     success = move.applyMove(board, token, destination);
                 } else {
-                    SlideMove move = new SlideMove(currentPlayer);
+                    move = new SlideMove(currentPlayer);
                     success = move.applyMove(board, token, destination);
                 }
 
@@ -113,16 +120,18 @@ public class Game {
             if (token.getColour() == TokenColour.BLACK) {
                 if (board.haveThreeTokenLeftOnBoard() == 2 || board.haveThreeTokenLeftOnBoard() == 0) {
                     // white token can do jump move
-                    JumpMove move = new JumpMove(currentPlayer);
+                    move = new JumpMove(currentPlayer);
                     success = move.applyMove(board, token, destination);
                 } else {
-                    SlideMove move = new SlideMove(currentPlayer);
+                    move = new SlideMove(currentPlayer);
                     success = move.applyMove(board, token, destination);
                 }
 
             }
 
         }
+
+
 
         if (destination != null)
         {
@@ -131,23 +140,26 @@ public class Game {
                 System.out.println("Mill");
                 MillText.setVisible(true);
                 MillButton.setVisible(true);
+
             }
+            if (success)
+            {
+                display.displayMoveToken(token.getShape(), destination.getShape());
+            }
+
         }
         //TO DO: remove the Mill text
 //            MillText.setVisible(false);
 
         if (success)
         {
-                iterateTurn();
-                display.displayMoveToken(token.getShape(), destination.getShape());
-                return true;
+            iterateTurn();
+            return null;
         }
 
 
 
-
-
-        return success;
+        return move.getErrorMessage();
     }
 
 
@@ -184,13 +196,12 @@ public class Game {
 
         if (gameStage == GameStage.SLIDING_MOVE)
         {
-            if (board.isGameFinished())
+            if (board.isGameFinished(getPlayerTurn().getTokenColour()))
             {
                 setWinner(board.getWinningColour());
             }
         }
-
-
+        System.out.println(gameStage);
     }
 
     private void setWinner(TokenColour tokenColour)

@@ -11,7 +11,7 @@ public class Display {
 
     public void displayRemoveToken(Shape token){
         token.setVisible(false);
-
+//        token.removeEventHandler();
     }
 
 }

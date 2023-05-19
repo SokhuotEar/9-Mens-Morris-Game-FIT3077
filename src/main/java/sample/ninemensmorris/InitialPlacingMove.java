@@ -1,7 +1,5 @@
 package sample.ninemensmorris;
 
-import javafx.scene.control.Label;
-
 public class InitialPlacingMove extends MoveAction {
 
 
@@ -15,13 +13,16 @@ public class InitialPlacingMove extends MoveAction {
     }
 
     @Override
-    public boolean validateMove(Board board, Token token, Position endingLocation, Label ErrorMessage) {
+    public boolean validateMove(Board board, Token token, Position endingLocation) {
         if (token.getPosition() == null) {
             return true;
         }
-        System.out.println("wrong placing move");
-        ErrorMessage.setText("wrong placing move");
-        ErrorMessage.setVisible(true);
+
         return false;
+    }
+
+    @Override
+    public void setErrorMessage() {
+        errorMessage = "Wrong placing move";
     }
 }

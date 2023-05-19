@@ -362,9 +362,14 @@ public class Board {
         return null; // Element not found
     }
 
-    public boolean isGameFinished()
+    public boolean isGameFinished(TokenColour colour)
     {
         if (getPlayableWhiteToken().size() <= 2 || getPlayableBlackToken().size() <= 2)
+        {
+            return true;
+        }
+
+        if (!hasAvailableMove(colour))
         {
             return true;
         }
@@ -387,6 +392,33 @@ public class Board {
         }
     }
 
+    public boolean hasAvailableMove(TokenColour tokenColour) {
+        if (tokenColour == TokenColour.WHITE) {
+            for (Token token : getPlayableWhiteToken()) {
+                Position position = token.getPosition();
+                for (Position neighbour : position.getNeighbours()) {
+                    if (!isWhiteTokenAt(neighbour) && !isBlackTokenAt(neighbour)) {
+                        return true;
+                    }
+                }
+
+            }
+        }
+
+        else if (tokenColour == TokenColour.BLACK) {
+            for (Token token : getPlayableBlackToken()) {
+                Position position = token.getPosition();
+                for (Position neighbour : position.getNeighbours()) {
+                    if (!isWhiteTokenAt(neighbour) && !isBlackTokenAt(neighbour)) {
+                        return true;
+                    }
+                }
+
+            }
+        }
+
+        return false;
+    }
 
 
 }

@@ -5,6 +5,7 @@ import java.util.Objects;
 public class MoveAction {
 
     protected Player player;
+    protected String errorMessage = null;
 
     /** constructor **/
     public MoveAction(Player player) {
@@ -25,6 +26,7 @@ public class MoveAction {
             return true;
         }
 
+        setErrorMessage();
         return false;
     }
 
@@ -33,6 +35,17 @@ public class MoveAction {
     {
         return true;
     }
+
+    public String getErrorMessage()
+    {
+        return getErrorMessage();
+    }
+
+    public void setErrorMessage()
+    {
+        return;
+    }
+
 
 
 

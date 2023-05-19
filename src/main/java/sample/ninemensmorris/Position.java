@@ -2,6 +2,8 @@ package sample.ninemensmorris;
 
 import javafx.scene.shape.Shape;
 
+import java.io.PipedOutputStream;
+
 public class Position implements HasShape{
 
     private Position[] neighbours;
@@ -57,5 +59,9 @@ public class Position implements HasShape{
             return true;
         }
         return false;
+    }
+
+    public Position[] getNeighbours() {
+        return neighbours;
     }
 }

@@ -19,6 +19,13 @@ import java.util.ResourceBundle;
 public class FxController implements Initializable {
 
     @FXML
+    private Label ErrorMessage;
+
+    @FXML
+    private Label TurnMessage;
+
+
+    @FXML
     private Label MillText;
 
     @FXML
@@ -249,6 +256,10 @@ public class FxController implements Initializable {
         //hide Mill Button
         MillButton.setVisible(false);
 
+        //hide Error Message
+        ErrorMessage.setVisible(false);
+
+
         //Update Player name
         player1Text.setText(data.getPlayerName1());
         player2Text.setText(data.getPlayerName2());
@@ -260,7 +271,12 @@ public class FxController implements Initializable {
             LayoutX = (int) shape.getLayoutX();
             LayoutY = (int) shape.getLayoutY();
             if(currentToken ==null){
-                System.out.println("Please select token first");
+
+                System.out.println("no token");
+                ErrorMessage.setVisible(true);
+                ErrorMessage.setText("Please select token first");
+
+
             } else {
                 // get the token
                 Token token = (Token) instanceToShapeMap.get(currentToken);
@@ -272,6 +288,10 @@ public class FxController implements Initializable {
                 }
                 if (game.isHasMill() && shape != MillButton)
                 {
+                    // TODO: printing to console works, but it does  not display as error message
+                    System.out.println("Must make a mill move!");
+                    ErrorMessage.setVisible(true);
+                    ErrorMessage.setText("Must make a mill move");
                     return;
                 }
 
@@ -287,7 +307,19 @@ public class FxController implements Initializable {
                 }
 
                 // tell game to execute move
-                boolean success = game.executeMove(token, destination, MillText, MillButton);
+                String errorMessage = game.executeMove(token, destination, MillText, MillButton);
+
+                if (errorMessage != null)
+                {
+                    // TODO: printing to console works, but it does  not display as error message
+                    System.out.println(errorMessage);
+                    ErrorMessage.setVisible(true);
+                    ErrorMessage.setText(errorMessage);
+                }
+
+                if (!game.isHasMill()) {
+                    TurnMessage.setText(game.getDisplayTurn());
+                }
 
                 currentToken = null;
 //
@@ -295,7 +327,9 @@ public class FxController implements Initializable {
 
 
             }
+
             shape.setDisable(false);
+            ErrorMessage.setVisible(false);
             //checkIfGameIsOver();
         });
 

@@ -27,4 +27,9 @@ public class SlideMove extends MoveAction{
 
         return false;
     }
+
+    @Override
+    public void setErrorMessage() {
+        errorMessage = "Wrong sliding move";
+    }
 }
