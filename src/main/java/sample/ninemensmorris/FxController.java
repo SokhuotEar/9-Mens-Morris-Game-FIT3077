@@ -317,9 +317,8 @@ public class FxController implements Initializable {
                     ErrorMessage.setText(errorMessage);
                 }
 
-                if (!game.isHasMill()) {
+
                     TurnMessage.setText(game.getDisplayTurn());
-                }
 
                 currentToken = null;
 //

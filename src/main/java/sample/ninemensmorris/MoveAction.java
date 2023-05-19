@@ -38,7 +38,7 @@ public abstract class MoveAction {
 
     public String getErrorMessage()
     {
-        return getErrorMessage();
+        return errorMessage;
     }
 
     public void setErrorMessage()

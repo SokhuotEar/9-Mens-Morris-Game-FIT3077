@@ -65,13 +65,21 @@ public class Game {
 
     public String getDisplayTurn()
     {
+        if(hasMill){
+            return "REMOVE "+getPlayerTurn().getTokenColour().toString();
+        }
+
         return getPlayerTurn().getTokenColour().toString() + " TURN";
     }
 
 
     public String executeMove(Token token, Position destination, Label MillText, Shape MillButton) {
 
-        System.out.println(turn);
+        if (gameStage == GameStage.FINISHED)
+        {
+            return winner.getTokenColour().toString() + " Wins";
+        }
+
         // get the player making the move
         Player currentPlayer = getPlayerTurn();
 
@@ -80,20 +88,13 @@ public class Game {
             return "Wrong turn!";
         }
 
-        if (turn == 6)
-        {
-            int a = 1;
-        }
 
         // get game stage
         boolean success = false;
         MoveAction move = null;
 
-        if (gameStage == GameStage.FINISHED)
-        {
-            return winner.getName();
-        }
-        else if (hasMill) {
+
+        if (hasMill) {
             move = new RemoveMove(currentPlayer);
             success = move.applyMove(board, token, destination);
             if (success) {
@@ -144,6 +145,7 @@ public class Game {
                 System.out.println("Mill");
                 MillText.setVisible(true);
                 MillButton.setVisible(true);
+                getDisplayTurn();
 
             }
             display.displayMoveToken(token.getShape(), destination.getShape());

@@ -15,10 +15,10 @@
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: f1529111;">
          <children>
-            <Label layoutX="368.0" layoutY="21.0" style="-fx-font-size: 40px;" text="9 Men's Morris" textFill="#8d6f1e" />
-            <Label fx:id="ErrorMessage" layoutX="29.0" layoutY="31.0" text="Error Messgae" textFill="#a82525">
+            <Label layoutX="26.0" layoutY="21.0" style="-fx-font-size: 40px;" text="9 Men's Morris" textFill="#8d6f1e" />
+            <Label fx:id="ErrorMessage" layoutX="361.0" layoutY="34.0" text="Error Messgae" textFill="#a82525">
                <font>
-                  <Font size="26.0" />
+                  <Font size="22.0" />
                </font>
             </Label>
          </children>
