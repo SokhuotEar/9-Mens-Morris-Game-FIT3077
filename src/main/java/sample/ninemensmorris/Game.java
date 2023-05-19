@@ -65,7 +65,7 @@ public class Game {
 
     public String getDisplayTurn()
     {
-        return getPlayerTurn().getName() + "'s turn";
+        return getPlayerTurn().getTokenColour().toString() + " TURN";
     }
 
 

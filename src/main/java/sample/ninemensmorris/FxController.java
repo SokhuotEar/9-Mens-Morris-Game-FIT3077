@@ -329,7 +329,7 @@ public class FxController implements Initializable {
             }
 
             shape.setDisable(false);
-            ErrorMessage.setVisible(false);
+//            ErrorMessage.setVisible(false);
             //checkIfGameIsOver();
         });
 
@@ -339,6 +339,8 @@ public class FxController implements Initializable {
 
     private void setupToken(Shape shape) {
         shape.setOnMouseClicked(mouseEvent -> {
+
+            ErrorMessage.setVisible(false);
             currentToken = shape;
             shape.setDisable(false);
             //checkIfGameIsOver();

@@ -16,6 +16,11 @@
       <AnchorPane prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: f1529111;">
          <children>
             <Label layoutX="368.0" layoutY="21.0" style="-fx-font-size: 40px;" text="9 Men's Morris" textFill="#8d6f1e" />
+            <Label fx:id="ErrorMessage" layoutX="29.0" layoutY="31.0" text="Error Messgae" textFill="#a82525">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf0c0" height="700.0" layoutX="22.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="700.0" />
@@ -107,11 +112,6 @@
          </font>
       </Label>
       <Rectangle fx:id="MillButton" arcHeight="5.0" arcWidth="5.0" fill="#5dd245" height="48.0" layoutX="272.0" layoutY="905.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Label fx:id="ErrorMessage" layoutX="290.0" layoutY="843.0" text="Error Messgae" textAlignment="CENTER" textFill="#a82525">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
       <Label fx:id="TurnMessage" layoutX="762.0" layoutY="416.0" text="WHITE TURN" textFill="#556c98">
          <font>
             <Font size="29.0" />
