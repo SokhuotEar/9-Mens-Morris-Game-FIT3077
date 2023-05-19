@@ -57,6 +57,18 @@ public class Game {
         }
     }
 
+    public Player getNextPlayerTurn()
+    {
+        if ((turn+1) % 2 == 0)
+        {
+            return player1;
+        }
+        else
+        {
+            return player2;
+        }
+    }
+
     public void iterateTurn()
     {
         turn++;
@@ -66,7 +78,7 @@ public class Game {
 
 
 
-    public boolean executeMove(Token token, Position destination, Label MillText, Shape MillButton)
+    public boolean executeMove(Token token, Position destination, Label MillText, Shape MillButton, Label ErrorMessage, Label TurnMessage)
     {
         // get the player making the move
         Player currentPlayer = getPlayerTurn();
@@ -77,11 +89,13 @@ public class Game {
             return false;
         }
 
+
+
         // get game stage
         boolean success = false;
         if (gameStage == GameStage.INITIAL_PLACEMENT) {
             InitialPlacingMove move = new InitialPlacingMove(currentPlayer);
-            success = move.applyMove(board, token,destination);
+            success = move.applyMove(board, token,destination, ErrorMessage);
 
         }
 
@@ -92,11 +106,11 @@ public class Game {
                 {
                     // white token can do jump move
                     JumpMove move = new JumpMove(currentPlayer);
-                    success = move.applyMove(board, token, destination);
+                    success = move.applyMove(board, token, destination, ErrorMessage);
                 }
                 else {
                     SlideMove move = new SlideMove(currentPlayer);
-                    success = move.applyMove(board, token, destination);
+                    success = move.applyMove(board, token, destination, ErrorMessage);
                 }
 
             }
@@ -106,11 +120,11 @@ public class Game {
                 {
                     // white token can do jump move
                     JumpMove move = new JumpMove(currentPlayer);
-                    success = move.applyMove(board, token, destination);
+                    success = move.applyMove(board, token, destination, ErrorMessage);
                 }
                 else {
                     SlideMove move = new SlideMove(currentPlayer);
-                    success = move.applyMove(board, token, destination);
+                    success = move.applyMove(board, token, destination, ErrorMessage);
                 }
 
             }
@@ -119,10 +133,11 @@ public class Game {
 
         else if(gameStage == GameStage.REMOVE_MOVE){
             RemoveMove move = new RemoveMove(currentPlayer);
-            success = move.applyMove(board, token,destination);
+            success = move.applyMove(board, token,destination, ErrorMessage);
             if(success){
                 display.displayRemoveToken(token.getShape());
                 gameStage= GameStage.INITIAL_PLACEMENT;
+                TurnMessage.setText(currentPlayer.getTokenColour().toString() + ' ' + "TURN");
                 MillButton.setVisible(false);
                 MillText.setVisible(false);
                 return true;
@@ -145,6 +160,11 @@ public class Game {
 
         if (success)
         {
+            if(gameStage == GameStage.REMOVE_MOVE){
+                TurnMessage.setText("REMOVE " + getNextPlayerTurn().getTokenColour().toString());}
+            else {
+                TurnMessage.setText(getNextPlayerTurn().getTokenColour().toString() + ' ' + "TURN");
+            }
                 iterateTurn();
                 display.displayMoveToken(token.getShape(), destination.getShape());
                 return true;

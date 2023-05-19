@@ -1,5 +1,7 @@
 package sample.ninemensmorris;
 
+import javafx.scene.control.Label;
+
 import java.util.Objects;
 
 public class MoveAction {
@@ -12,13 +14,13 @@ public class MoveAction {
     }
 
     /** executes the move **/
-    public boolean applyMove(Board board, Token token, Position endingLocation)
+    public boolean applyMove(Board board, Token token, Position endingLocation, Label ErrorMessage)
     {
         // input validation
         Objects.requireNonNull(token);
 //        Objects.requireNonNull(endingLocation);
 
-        if (validateMove(board, token, endingLocation) == true)
+        if (validateMove(board, token, endingLocation, ErrorMessage) == true)
         {
             // execute move
             token.setPosition(endingLocation);
@@ -29,7 +31,7 @@ public class MoveAction {
     }
 
 
-    public boolean validateMove(Board board, Token token, Position endingLocation)
+    public boolean validateMove(Board board, Token token, Position endingLocation, Label ErrorMessage)
     {
         return true;
     }
