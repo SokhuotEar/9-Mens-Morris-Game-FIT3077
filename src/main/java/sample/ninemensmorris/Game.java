@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
@@ -21,6 +20,7 @@ public class Game {
     private Display display;
     private int turn = 0;
     private GameStage gameStage = GameStage.INITIAL_PLACEMENT;
+    private boolean hasMill = false;
 
     public Game() {
         // set up board
@@ -57,18 +57,6 @@ public class Game {
         }
     }
 
-    public Player getNextPlayerTurn()
-    {
-        if ((turn+1) % 2 == 0)
-        {
-            return player1;
-        }
-        else
-        {
-            return player2;
-        }
-    }
-
     public void iterateTurn()
     {
         turn++;
@@ -78,93 +66,78 @@ public class Game {
 
 
 
-    public boolean executeMove(Token token, Position destination, Label MillText, Shape MillButton, Label ErrorMessage, Label TurnMessage)
-    {
+
+
+    public boolean executeMove(Token token, Position destination, Label MillText, Shape MillButton) {
         // get the player making the move
         Player currentPlayer = getPlayerTurn();
 
         //verify if it is the correct turn
-        if (currentPlayer.getTokenColour() != token.getColour())
-        {
+        if (currentPlayer.getTokenColour() != token.getColour()) {
             return false;
         }
 
-
-
         // get game stage
         boolean success = false;
-        if (gameStage == GameStage.INITIAL_PLACEMENT) {
-            InitialPlacingMove move = new InitialPlacingMove(currentPlayer);
-            success = move.applyMove(board, token,destination, ErrorMessage);
 
-        }
-
-        else if (gameStage == GameStage.SLIDING_MOVE) {
-
-            if(token.getColour() == TokenColour.WHITE){
-                if (board.haveThreeTokenLeftOnBoard()== 1|| board.haveThreeTokenLeftOnBoard()== 0)
-                {
-                    // white token can do jump move
-                    JumpMove move = new JumpMove(currentPlayer);
-                    success = move.applyMove(board, token, destination, ErrorMessage);
-                }
-                else {
-                    SlideMove move = new SlideMove(currentPlayer);
-                    success = move.applyMove(board, token, destination, ErrorMessage);
-                }
-
-            }
-
-            if(token.getColour() == TokenColour.BLACK){
-                if (board.haveThreeTokenLeftOnBoard()== 2 || board.haveThreeTokenLeftOnBoard()== 0)
-                {
-                    // white token can do jump move
-                    JumpMove move = new JumpMove(currentPlayer);
-                    success = move.applyMove(board, token, destination, ErrorMessage);
-                }
-                else {
-                    SlideMove move = new SlideMove(currentPlayer);
-                    success = move.applyMove(board, token, destination, ErrorMessage);
-                }
-
-            }
-
-        }
-
-        else if(gameStage == GameStage.REMOVE_MOVE){
+        if (hasMill) {
             RemoveMove move = new RemoveMove(currentPlayer);
-            success = move.applyMove(board, token,destination, ErrorMessage);
-            if(success){
+            success = move.applyMove(board, token, destination);
+            if (success) {
+                token.removeCapability(TokenCapability.PLAYABLE);
                 display.displayRemoveToken(token.getShape());
-                gameStage= GameStage.INITIAL_PLACEMENT;
-                TurnMessage.setText(currentPlayer.getTokenColour().toString() + ' ' + "TURN");
                 MillButton.setVisible(false);
                 MillText.setVisible(false);
+                hasMill = false;
                 return true;
             }
 
+        } else if (gameStage == GameStage.INITIAL_PLACEMENT) {
+            InitialPlacingMove move = new InitialPlacingMove(currentPlayer);
+            success = move.applyMove(board, token, destination);
+
+        } else if (gameStage == GameStage.SLIDING_MOVE) {
+
+            if (token.getColour() == TokenColour.WHITE) {
+                if (board.haveThreeTokenLeftOnBoard() == 1 || board.haveThreeTokenLeftOnBoard() == 0) {
+                    // white token can do jump move
+                    JumpMove move = new JumpMove(currentPlayer);
+                    success = move.applyMove(board, token, destination);
+                } else {
+                    SlideMove move = new SlideMove(currentPlayer);
+                    success = move.applyMove(board, token, destination);
+                }
+
+            }
+
+            if (token.getColour() == TokenColour.BLACK) {
+                if (board.haveThreeTokenLeftOnBoard() == 2 || board.haveThreeTokenLeftOnBoard() == 0) {
+                    // white token can do jump move
+                    JumpMove move = new JumpMove(currentPlayer);
+                    success = move.applyMove(board, token, destination);
+                } else {
+                    SlideMove move = new SlideMove(currentPlayer);
+                    success = move.applyMove(board, token, destination);
+                }
+
+            }
+
         }
 
-        if (board.determineMill(destination, token))
+        if (destination != null)
         {
-            System.out.println("Mill");
-            MillText.setVisible(true);
-            MillButton.setVisible(true);
-            gameStage = GameStage.REMOVE_MOVE;
-
-
-
-            //TO DO: remove the Mill text
-//            MillText.setVisible(false);
+            if (board.determineMill(destination, token)) {
+                hasMill = true;
+                System.out.println("Mill");
+                MillText.setVisible(true);
+                MillButton.setVisible(true);
+            }
         }
+        //TO DO: remove the Mill text
+//            MillText.setVisible(false);
 
         if (success)
         {
-            if(gameStage == GameStage.REMOVE_MOVE){
-                TurnMessage.setText("REMOVE " + getNextPlayerTurn().getTokenColour().toString());}
-            else {
-                TurnMessage.setText(getNextPlayerTurn().getTokenColour().toString() + ' ' + "TURN");
-            }
                 iterateTurn();
                 display.displayMoveToken(token.getShape(), destination.getShape());
                 return true;
@@ -187,9 +160,9 @@ public class Game {
         return false;
     }
 
-    public Player getWinner(Player player){
+    public Player getWinner(){
         //get the winner
-        return player;
+        return winner;
     };
 
     //player click on option button
@@ -209,12 +182,27 @@ public class Game {
             }
         }
 
-        if (gameStage == GameStage.REMOVE_MOVE)
+        if (gameStage == GameStage.SLIDING_MOVE)
         {
-
-
+            if (board.isGameFinished())
+            {
+                setWinner(board.getWinningColour());
+            }
         }
 
+
+    }
+
+    private void setWinner(TokenColour tokenColour)
+    {
+        if (tokenColour == TokenColour.BLACK)
+        {
+            winner = player2;
+        }
+        else
+        {
+            winner = player1;
+        }
     }
 
     // move to Player detail scene button clicked
@@ -228,5 +216,7 @@ public class Game {
         window.show();
     }
 
-
+    public boolean isHasMill() {
+        return hasMill;
+    }
 }

@@ -146,6 +146,30 @@ public class Board {
         return blackTokens;
     }
 
+    public List<Token> getPlayableWhiteToken(){
+        List<Token> playableWhiteTokens = new ArrayList<>();
+
+        for (Token token : whiteTokens) {
+            if (token.isTokenPlayable()) {
+                playableWhiteTokens.add(token);
+            }
+        }
+
+        return playableWhiteTokens;
+    }
+
+    public List<Token> getPlayableBlackToken(){
+        List<Token> playableBlackTokens = new ArrayList<>();
+
+        for (Token token : blackTokens) {
+            if (token.isTokenPlayable()) {
+                playableBlackTokens.add(token);
+            }
+        }
+
+        return playableBlackTokens;
+    }
+
     public boolean validateMove(Token token, Position destination) {
         return true;
     }
@@ -178,13 +202,13 @@ public class Board {
 
     public boolean haveAllTokenBeenPlaced()
     {
-        for (Token token: whiteTokens)
+        for (Token token: getPlayableWhiteToken())
         {
             if (token.getPosition() == null) {
                 return false;
             }
         }
-        for (Token token: blackTokens)
+        for (Token token: getPlayableBlackToken())
         {
             if (token.getPosition() == null) {
                 return false;
@@ -203,14 +227,14 @@ public class Board {
 
         int NumberofWhiteToken=0;
         int NumberofBlackToken=0;
-        for (Token token: whiteTokens)
+        for (Token token: getPlayableWhiteToken())
         {
             if (token.getPosition() != null) {
                 NumberofWhiteToken++;
             }
         }
 
-        for (Token token: blackTokens)
+        for (Token token: getPlayableBlackToken())
         {
             if (token.getPosition() != null) {
                 NumberofBlackToken++;
@@ -338,10 +362,29 @@ public class Board {
         return null; // Element not found
     }
 
-    public void detectJumpStage()
+    public boolean isGameFinished()
     {
+        if (getPlayableWhiteToken().size() <= 2 || getPlayableBlackToken().size() <= 2)
+        {
+            return true;
+        }
+        return false;
+    }
 
-
+    public TokenColour getWinningColour()
+    {
+        if (getPlayableBlackToken().size() <= 2)
+        {
+            return TokenColour.WHITE;
+        }
+        else if (getPlayableWhiteToken().size() <= 2)
+        {
+            return TokenColour.BLACK;
+        }
+        else
+        {
+            return null;
+        }
     }
 
 

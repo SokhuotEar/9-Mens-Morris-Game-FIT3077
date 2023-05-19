@@ -19,12 +19,6 @@ import java.util.ResourceBundle;
 public class FxController implements Initializable {
 
     @FXML
-    private Label ErrorMessage;
-
-    @FXML
-    private Label TurnMessage;
-
-    @FXML
     private Label MillText;
 
     @FXML
@@ -196,7 +190,7 @@ public class FxController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         buttons =new ArrayList<>(Arrays.asList(button1,button2, button3, button4, button5, button6, button7, button8, button9, button10
-        , button11, button12, button13, button14, button15, button16, button17, button18, button19, button20, button21, button22, button23, button24, MillButton));
+        , button11, button12, button13, button14, button15, button16, button17, button18, button19, button20, button21, button22, button23, button24,MillButton));
 
         buttons.forEach(shape -> {
             setupPosition(shape);
@@ -255,13 +249,9 @@ public class FxController implements Initializable {
         //hide Mill Button
         MillButton.setVisible(false);
 
-        //hide Error Message
-        ErrorMessage.setVisible(false);
-
         //Update Player name
         player1Text.setText(data.getPlayerName1());
         player2Text.setText(data.getPlayerName2());
-
 
     }
     private void setupPosition(Shape shape) {
@@ -271,19 +261,37 @@ public class FxController implements Initializable {
             LayoutY = (int) shape.getLayoutY();
             if(currentToken ==null){
                 System.out.println("Please select token first");
-                ErrorMessage.setVisible(true);
-                ErrorMessage.setText("Please select token first");
-            }else {
+            } else {
                 // get the token
                 Token token = (Token) instanceToShapeMap.get(currentToken);
 
+                //
+                if (game.isHasMill())
+                {
+                    int a= 1;
+                }
+                if (game.isHasMill() && shape != MillButton)
+                {
+                    return;
+                }
+
                 // get destination
-                Position destination = (Position) instanceToShapeMap.get(shape);
+                Position destination;
+                if (shape == MillButton)
+                {
+                    destination = null;
+                }
+                else
+                {
+                    destination = (Position) instanceToShapeMap.get(shape);
+                }
 
                 // tell game to execute move
-                boolean success = game.executeMove(token, destination, MillText, MillButton, ErrorMessage, TurnMessage);
+                boolean success = game.executeMove(token, destination, MillText, MillButton);
 
                 currentToken = null;
+//
+//                displayMoveToken(currentToken, LayoutX, LayoutY);
 
 
             }
@@ -300,7 +308,6 @@ public class FxController implements Initializable {
             currentToken = shape;
             shape.setDisable(false);
             //checkIfGameIsOver();
-            ErrorMessage.setVisible(false);
         });
 
     }

@@ -10,7 +10,7 @@ public class Token implements HasShape {
     private Shape shape;
 
     private TokenColour colour;
-    private List<Capability> capabilities = new ArrayList<>();
+    private List<TokenCapability> capabilities = new ArrayList<>();
 
     private Position position;
 
@@ -22,7 +22,7 @@ public class Token implements HasShape {
         this.position = position;
     }
 
-    public List<Capability> getCapabilities() {
+    public List<TokenCapability> getCapabilities() {
         return capabilities;
     }
 
@@ -34,6 +34,12 @@ public class Token implements HasShape {
         this.shape = shape;
         this.colour = colour;
         this.position = position;
+        this.capabilities.add(TokenCapability.PLAYABLE);
+    }
+
+    public void removeCapability(TokenCapability capability)
+    {
+        capabilities.remove(capability);
     }
 
     @Override
@@ -44,6 +50,11 @@ public class Token implements HasShape {
     @Override
     public void setShape(Shape shape) {
         this.shape = shape;
+    }
+
+    public boolean isTokenPlayable()
+    {
+        return capabilities.contains(TokenCapability.PLAYABLE);
     }
 
 
