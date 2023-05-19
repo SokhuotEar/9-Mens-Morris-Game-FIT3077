@@ -199,6 +199,7 @@ public class Game {
             if (board.isGameFinished(getPlayerTurn().getTokenColour()))
             {
                 setWinner(board.getWinningColour());
+                gameStage = GameStage.FINISHED;
             }
         }
         System.out.println(gameStage);
