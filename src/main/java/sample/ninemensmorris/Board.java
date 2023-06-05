@@ -1,7 +1,9 @@
 package sample.ninemensmorris;
-import java.util.List;
+import javafx.geometry.Pos;
 
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Board {
 
@@ -10,6 +12,7 @@ public class Board {
     private Token[] blackTokens = new Token[9];
     private Position[][] map;
     private Position emptyPosition = new EmptyPosition(null);
+
 
     public Board() {
 
@@ -241,19 +244,39 @@ public class Board {
             }
         }
         if(NumberofWhiteToken ==3 && NumberofBlackToken ==3){
+            setBlackCanJump();
+            setBlackCanJump();
             output = 0;
             return output;
         }
         if(NumberofWhiteToken ==3){
+            setWhiteCanJump();
             output= 1;
             return output;
         }
         if(NumberofBlackToken ==3){
+            setBlackCanJump();
             output =2;
             return output;
         }
         output =3;
         return output;
+    }
+
+    public void setWhiteCanJump()
+    {
+        for (Token token: whiteTokens)
+        {
+            token.addCapability(TokenCapability.JUMP);
+        }
+    }
+
+    public void setBlackCanJump()
+    {
+        for (Token token: blackTokens)
+        {
+            token.addCapability(TokenCapability.JUMP);
+        }
     }
 
     public boolean determineMill(Position position, Token token)
@@ -427,5 +450,60 @@ public class Board {
 
         return false;
     }
+
+    public List<Token> getTokensThisTurn(TokenColour tokenColour)
+    {
+        if (tokenColour == TokenColour.BLACK)
+        {
+            return getPlayableBlackToken();
+        }
+        else{
+            return getPlayableWhiteToken();
+        }
+    }
+
+    public List<Token> getNonPlacedToken(TokenColour tokenColour)
+    {
+        List<Token> tokens = getTokensThisTurn(tokenColour);
+        List<Token> returnTokens = getTokensThisTurn(tokenColour);
+
+        for (Token token: tokens)
+        {
+            if ((token.getPosition() == null) && (token.getCapabilities().contains(TokenCapability.PLAYABLE) ))
+            {
+                returnTokens.add(token);
+            }
+        }
+        return returnTokens;
+    }
+
+    public List<Position> getEmptyPositions()
+    {
+        ArrayList<Position> emptyPositions = new ArrayList<>();
+        for (Position position : positions)
+        {
+            if (!isBlackTokenAt(position) && !isWhiteTokenAt(position))
+            {
+                emptyPositions.add(position);
+            }
+
+        }
+        return emptyPositions;
+    }
+
+    public ArrayList<Position> getEmptyNeighboursOf(Position position)
+    {
+        ArrayList <Position> emptyNeighbours = new ArrayList<>();
+
+        for (Position neighbour: position.getNeighbours())
+        {
+            if (!isWhiteTokenAt(neighbour) && !isBlackTokenAt(neighbour))
+            {
+                emptyNeighbours.add(neighbour);
+            }
+        }
+        return emptyNeighbours;
+    }
+
 
 }

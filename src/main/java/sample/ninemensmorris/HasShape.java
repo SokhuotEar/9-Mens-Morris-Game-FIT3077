@@ -6,4 +6,5 @@ public interface HasShape {
     Shape getShape();
 
     void setShape(Shape shape);
+
 }

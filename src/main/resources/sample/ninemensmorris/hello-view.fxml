@@ -94,7 +94,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <Button defaultButton="true" layoutX="842.0" layoutY="910.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="103.0" text="HINT" textFill="#b59c55">
+      <Button fx:id = "HintButton" defaultButton="true" layoutX="842.0" layoutY="910.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="103.0" text="HINT" textFill="#b59c55">
          <font>
             <Font name="Algerian" size="20.0" />
          </font>

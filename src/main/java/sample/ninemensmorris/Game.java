@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
+import java.util.List;
 
 import java.io.IOException;
 
@@ -71,6 +72,7 @@ public class Game {
 
         return getPlayerTurn().getTokenColour().toString() + " TURN";
     }
+
 
 
     public String executeMove(Token token, Position destination, Label MillText, Shape MillButton) {
@@ -138,7 +140,6 @@ public class Game {
         }
 
 
-
         if (destination != null && success) {
             if (board.determineMill(destination, token)) {
                 hasMill = true;
@@ -151,11 +152,10 @@ public class Game {
             display.displayMoveToken(token.getShape(), destination.getShape());
 
         }
-        //TO DO: remove the Mill text
-//            MillText.setVisible(false);
 
         if (success)
         {
+            display.resetShapeColour();
             iterateTurn();
             return null;
         }
@@ -231,5 +231,79 @@ public class Game {
 
     public boolean isHasMill() {
         return hasMill;
+    }
+
+    public void displayPlayableToken()
+    {
+
+        if (hasMill)
+        {
+
+        }
+        else if (gameStage == GameStage.INITIAL_PLACEMENT)
+        {
+            List<Token> tokens = board.getNonPlacedToken(getPlayerTurn().getTokenColour());
+
+            for (Token token: tokens)
+            {
+                if (token.getPosition() == null) {
+                    display.glowUpShape(token.getShape());
+                }
+            }
+        }
+        else if (gameStage == GameStage.SLIDING_MOVE)
+        {
+            List<Token> tokens = board.getTokensThisTurn(getPlayerTurn().getTokenColour());
+
+            for (Token token: tokens)
+            {
+                display.glowUpShape(token.getShape());
+            }
+        }
+    }
+
+    public void displayPlaceablePosition(Token currentToken)
+    {
+        board.haveThreeTokenLeftOnBoard();
+        if (currentToken.getColour() != getPlayerTurn().getTokenColour())
+        {
+            display.resetShapeColour();
+            return;
+        }
+
+        if (hasMill)
+        {
+
+        }
+        else if ((gameStage == GameStage.INITIAL_PLACEMENT))
+        {
+            if (currentToken.getPosition() != null) {
+                return;
+            }
+
+            for (Position position : board.getEmptyPositions()) {
+                display.glowUpShape(position.getShape());
+            }
+        }
+
+        else if (currentToken.isTokenJumpable()){
+            for (Position position : board.getEmptyPositions()) {
+                display.glowUpShape(position.getShape());
+            }
+        }
+        else if (gameStage == GameStage.SLIDING_MOVE)
+        {
+            for (Position position: board.getEmptyNeighboursOf(currentToken.getPosition()))
+            {
+                display.glowUpShape(position.getShape());
+            }
+        }
+    }
+    public void resetShapeColour(){
+        display.resetShapeColour();
+    }
+
+    public Display getDisplay() {
+        return display;
     }
 }

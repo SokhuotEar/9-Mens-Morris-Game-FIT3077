@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import javafx.scene.paint.Color;
 
 public class FxController implements Initializable {
 
@@ -170,6 +171,9 @@ public class FxController implements Initializable {
     @FXML
     private Shape BlackToken9;
 
+    @FXML
+    private Button HintButton;
+
 
 
     private Game game;
@@ -213,6 +217,9 @@ public class FxController implements Initializable {
             shape.setFocusTraversable(false);
 
         });
+
+        // set up hint button
+        setupHintButton(HintButton);
 
         // initialise a new game
         game = new Game();
@@ -317,8 +324,7 @@ public class FxController implements Initializable {
                     ErrorMessage.setText(errorMessage);
                 }
 
-
-                    TurnMessage.setText(game.getDisplayTurn());
+                TurnMessage.setText(game.getDisplayTurn());
 
                 currentToken = null;
 //
@@ -345,6 +351,26 @@ public class FxController implements Initializable {
             //checkIfGameIsOver();
         });
 
+    }
+
+    private void setupHintButton(Button button){
+        button.setOnMouseClicked(mouseEvent -> {
+            System.out.println("hintButtonPressed");
+
+            game.resetShapeColour();
+
+            if (currentToken == null)
+            {
+                game.displayPlayableToken();
+            }
+            else
+            {
+                game.getDisplay().glowUpShape(currentToken);
+                Token token = (Token) instanceToShapeMap.get(currentToken);
+                game.displayPlaceablePosition(token);
+            }
+            currentToken = null;
+        });
     }
 
 

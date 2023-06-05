@@ -57,6 +57,19 @@ public class Token implements HasShape {
         return capabilities.contains(TokenCapability.PLAYABLE);
     }
 
+    public boolean isTokenJumpable()
+    {
+        return capabilities.contains(TokenCapability.JUMP);
+    }
+
+    public void addCapability(TokenCapability capability)
+    {
+        if (!capabilities.contains(capability))
+        {
+            capabilities.add(capability);
+        }
+    }
+
 
 
 }
