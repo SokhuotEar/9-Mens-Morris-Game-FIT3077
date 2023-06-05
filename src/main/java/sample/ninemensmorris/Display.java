@@ -22,7 +22,8 @@ public class Display {
 
     public void glowUpShape(Shape shape){
 
-        shape.setStroke(Color.BLUE);
+        shape.setStroke(Color.BLUEVIOLET);
+        shape.setStrokeWidth(3);
 
         shapeToReset.add(shape);
     }

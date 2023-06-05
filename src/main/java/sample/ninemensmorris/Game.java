@@ -229,6 +229,18 @@ public class Game {
         window.show();
     }
 
+
+
+    public void switchToTutorialMode(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("TutorialMode.fxml"));
+        Scene scene = new Scene(root);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(scene);
+        window.show();
+    }
+
     public boolean isHasMill() {
         return hasMill;
     }
