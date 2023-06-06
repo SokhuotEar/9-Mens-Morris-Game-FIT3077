@@ -3,20 +3,26 @@ package sample.ninemensmorris;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.controlsfx.control.action.Action;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.scene.paint.Color;
 
-public class TutorialGame {
+public class TutorialGame implements Initializable {
 
     @FXML
     private Label TitleMessage;
@@ -26,7 +32,7 @@ public class TutorialGame {
 
 
     @FXML
-    private Label MillText;
+    private Label InstructionText;
 
     @FXML
     private Text player1Text;
@@ -34,8 +40,6 @@ public class TutorialGame {
     @FXML
     private Text player2Text;
 
-    @FXML
-    private Shape MillButton;
 
     PlayerNameHolder data = PlayerNameHolder.getInstance();
 
@@ -186,12 +190,72 @@ public class TutorialGame {
     @FXML
     private Shape PreviousChapter;
 
+    private int ChapterCount =1;
+    private int PageCount =1;
 
+
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setupNextButton(NextButton);
+        setupPreviousButton(PreviousButton);
+        setupNextChapterButton(NextChapter);
+        setupPreviousChapterButton(PreviousChapter);
+
 
 
 
     }
 
+    private void setupNextButton(Button button){
+        button.setOnMouseClicked(mouseEvent -> {
+            System.out.println("NextButtonPressed");
 
+            PageCount++;
+
+
+        });
+    }
+
+    private void setupPreviousButton(Button button){
+        button.setOnMouseClicked(mouseEvent -> {
+            System.out.println("PreviousButtonPressed");
+
+            PageCount--;
+
+
+        });
+    }
+
+
+    private void setupNextChapterButton(Shape shape){
+        shape.setOnMouseClicked(mouseEvent -> {
+            System.out.println("NextChapterButtonPressed");
+
+            ChapterCount++;
+
+
+        });
+    }
+
+    private void setupPreviousChapterButton(Shape shape){
+        shape.setOnMouseClicked(mouseEvent -> {
+            System.out.println("PreviousChapterButtonPressed");
+
+            ChapterCount--;
+
+
+        });
+    }
+
+
+
+    public void setupPlayButton(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("WelcomeUI.fxml"));
+        Scene scene = new Scene(root);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(scene);
+        window.show();
+    }
 }

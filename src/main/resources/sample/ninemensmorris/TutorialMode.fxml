@@ -24,7 +24,7 @@
             </Label>
             <Polygon fx:id="PreviousChapter" fill="#dddc78" layoutX="296.0" layoutY="64.0" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" rotate="-90.0" scaleX="0.5" scaleY="0.5" stroke="#beb159" strokeType="INSIDE" />
             <Polygon fx:id="NextChapter" fill="#dddc78" layoutX="662.0" layoutY="62.0" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" rotate="90.0" scaleX="0.5" scaleY="0.5" stroke="#beb159" strokeType="INSIDE" />
-            <Button fx:id="PlayButton" layoutX="839.0" layoutY="35.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="127.0" text="Play!" textFill="#b59c55">
+            <Button fx:id="PlayButton" layoutX="839.0" layoutY="35.0" mnemonicParsing="false" onAction="#setupPlayButton" prefHeight="37.0" prefWidth="127.0" text="Play!" textFill="#b59c55">
                <font>
                   <Font name="Algerian" size="20.0" />
                </font>
@@ -109,12 +109,11 @@
                 </DropShadow>
             </effect>
         </Button>
-        <Label fx:id="MillText" layoutX="90.0" layoutY="843.0" text="Mill! Click button to remove a token of your opponent!" textFill="#4caa24">
+        <Label fx:id="InstructionText" layoutX="28.0" layoutY="843.0" prefHeight="38.0" prefWidth="938.0" text="Mill! Click button to remove a token of your opponent!" textFill="#4caa24">
             <font>
                 <Font size="26.0" />
             </font>
         </Label>
-        <Rectangle fx:id="MillButton" arcHeight="5.0" arcWidth="5.0" fill="#5dd245" height="48.0" layoutX="272.0" layoutY="905.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
         <Label fx:id="TurnMessage" layoutX="762.0" layoutY="416.0" text="WHITE TURN" textFill="#556c98">
             <font>
                 <Font size="29.0" />
