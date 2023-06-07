@@ -1,9 +1,7 @@
 package sample.ninemensmorris;
-import javafx.geometry.Pos;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Board {
 
@@ -504,6 +502,21 @@ public class Board {
         }
         return emptyNeighbours;
     }
+
+    public ArrayList<Token> getTokenNotInMill(ArrayList<Token> tokens)
+    {
+        ArrayList <Token> tokenMill = new ArrayList<>();
+
+        for (Token token: tokens){
+            if ((token.getPosition() != null) && !determineMill(token.getPosition(), token))
+            {
+                tokenMill.add(token);
+            }
+        }
+        return tokenMill;
+    }
+
+
 
 
 }

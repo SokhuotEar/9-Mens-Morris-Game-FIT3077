@@ -365,7 +365,10 @@ public class FxController implements Initializable {
             }
             else
             {
-                game.getDisplay().glowUpShape(currentToken);
+                if (!game.isHasMill())
+                {
+                    game.getDisplay().glowUpShape(currentToken);
+                }
                 Token token = (Token) instanceToShapeMap.get(currentToken);
                 game.displayPlaceablePosition(token);
             }

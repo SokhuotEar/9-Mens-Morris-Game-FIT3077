@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import java.io.IOException;
@@ -250,7 +252,13 @@ public class Game {
 
         if (hasMill)
         {
+            List<Token> tokens = board.getTokensThisTurn(getPlayerTurn().getTokenColour());
+            ArrayList<Token> millTokens = board.getTokenNotInMill(new ArrayList<>(tokens));
 
+            for (Token token: millTokens)
+            {
+                display.glowUpShape(token.getShape());
+            }
         }
         else if (gameStage == GameStage.INITIAL_PLACEMENT)
         {
@@ -277,6 +285,7 @@ public class Game {
     public void displayPlaceablePosition(Token currentToken)
     {
         board.haveThreeTokenLeftOnBoard();
+
         if (currentToken.getColour() != getPlayerTurn().getTokenColour())
         {
             display.resetShapeColour();
@@ -285,7 +294,7 @@ public class Game {
 
         if (hasMill)
         {
-
+            return;
         }
         else if ((gameStage == GameStage.INITIAL_PLACEMENT))
         {
