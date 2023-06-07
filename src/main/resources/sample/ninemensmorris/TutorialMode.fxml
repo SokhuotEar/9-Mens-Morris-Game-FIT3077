@@ -109,14 +109,9 @@
                 </DropShadow>
             </effect>
         </Button>
-        <Label fx:id="InstructionText" layoutX="28.0" layoutY="843.0" prefHeight="38.0" prefWidth="938.0" text="Mill! Click button to remove a token of your opponent!" textFill="#4caa24">
+        <Label fx:id="InstructionText" layoutX="28.0" layoutY="843.0" prefHeight="38.0" prefWidth="938.0" text="INSTRUCTION MESSAGE" textFill="#4caa24">
             <font>
-                <Font size="26.0" />
-            </font>
-        </Label>
-        <Label fx:id="TurnMessage" layoutX="762.0" layoutY="416.0" text="WHITE TURN" textFill="#556c98">
-            <font>
-                <Font size="29.0" />
+                <Font size="19.0" />
             </font>
         </Label>
       <Button fx:id="PreviousButton" layoutX="670.0" layoutY="910.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="127.0" text="Previous" textFill="#b59c55">
@@ -131,6 +126,11 @@
             </DropShadow>
          </effect>
       </Button>
+      <Circle fx:id="Circle" fill="#1f93ff00" layoutX="803.0" layoutY="217.0" radius="44.0" stroke="#ef0000" strokeType="INSIDE" strokeWidth="5.0" />
+      <Line fx:id="Line" endX="166.6666259765625" endY="-43.66667175292969" layoutX="582.0" layoutY="259.0" startX="-38.6666259765625" startY="49.0" stroke="#fd0000" strokeWidth="5.0" />
+      <Circle fx:id="Circle2" fill="#1f93ff00" layoutX="619.0" layoutY="707.0" radius="44.0" stroke="#ef0000" strokeType="INSIDE" strokeWidth="5.0" />
+      <Line fx:id="Cross1" endX="69.6666259765625" endY="73.66665649414062" layoutX="337.0" layoutY="283.0" startX="6.3333740234375" startY="-6.333343505859375" stroke="RED" strokeWidth="5.0" />
+      <Line fx:id="Cross2" endX="54.3333740234375" endY="-15.0" layoutX="347.0" layoutY="293.0" startX="-7.6666259765625" startY="60.999969482421875" stroke="RED" strokeWidth="5.0" />
 
     </children>
 </AnchorPane>
