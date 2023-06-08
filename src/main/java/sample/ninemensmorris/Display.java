@@ -10,16 +10,19 @@ public class Display {
 
     private ArrayList<Shape> shapeToReset = new ArrayList<>();
 
+    // display moves
     public void displayMoveToken(Shape tokenShape, Shape positionShape){
         tokenShape.setLayoutX(positionShape.getLayoutX());
         tokenShape.setLayoutY(positionShape.getLayoutY());
     }
 
+    // display remove token
     public void displayRemoveToken(Shape token){
         token.setVisible(false);
 //        token.removeEventHandler();
     }
 
+    // glow up shapes for hints
     public void glowUpShape(Shape shape){
 
         shape.setStroke(Color.BLUEVIOLET);
@@ -28,6 +31,7 @@ public class Display {
         shapeToReset.add(shape);
     }
 
+    // reset the glow up of hints
     public void resetShapeColour()
     {
         for (Shape shape: shapeToReset) {

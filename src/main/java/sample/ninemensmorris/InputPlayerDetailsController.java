@@ -26,6 +26,8 @@ public class InputPlayerDetailsController {
 
 
     PlayerNameHolder data = PlayerNameHolder.getInstance();
+
+    // change screen to the game scene once players have inputted their names
     public void switchToGameScene(ActionEvent event) throws IOException {
 
 
