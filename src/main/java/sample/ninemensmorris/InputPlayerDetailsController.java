@@ -35,7 +35,7 @@ public class InputPlayerDetailsController {
             NameErrorMessage.setText("Name cannot be Longer than 8 characters");
             return;
         }
-        if (player1.getText().equals(player2.getText()))
+        if (player1.getText().equals(player2.getText()) && !player1.getText().isBlank())
         {
             NameErrorMessage.setVisible(true);
             NameErrorMessage.setText("Players' name cannot be the same");
