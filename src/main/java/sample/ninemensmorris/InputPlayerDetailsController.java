@@ -29,6 +29,18 @@ public class InputPlayerDetailsController {
     public void switchToGameScene(ActionEvent event) throws IOException {
 
 
+        if ((player1.getText().length() > 8) || (player2.getText().length() > 8))
+        {
+            NameErrorMessage.setVisible(true);
+            NameErrorMessage.setText("Name cannot be Longer than 8 characters");
+            return;
+        }
+        if (player1.getText().equals(player2.getText()))
+        {
+            NameErrorMessage.setVisible(true);
+            NameErrorMessage.setText("Players' name cannot be the same");
+            return;
+        }
 
         data.setUserName1(player1.getText());
         data.setUserName2(player2.getText());
