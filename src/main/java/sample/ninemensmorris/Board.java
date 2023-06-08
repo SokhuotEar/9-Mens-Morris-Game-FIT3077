@@ -11,7 +11,7 @@ public class Board {
     private Position[][] map;
     private Position emptyPosition = new EmptyPosition(null);
 
-
+    // This method initialises the board
     public Board() {
 
         // create positions
@@ -49,6 +49,7 @@ public class Board {
         configureNeighbourForPosition();
     }
 
+    // this method finds all the neighbours of a position and store that information in position.neighbour.
     private void configureNeighbourForPosition()
     {
         int up_index = 0;
@@ -147,6 +148,7 @@ public class Board {
         return blackTokens;
     }
 
+    // this method finds all the white tokens that are playable (haven't been removed from the board yet)
     public List<Token> getPlayableWhiteToken(){
         List<Token> playableWhiteTokens = new ArrayList<>();
 
@@ -159,6 +161,7 @@ public class Board {
         return playableWhiteTokens;
     }
 
+    // this method finds all the black tokens that are playable (haven't been removed from the board yet)
     public List<Token> getPlayableBlackToken(){
         List<Token> playableBlackTokens = new ArrayList<>();
 
@@ -171,12 +174,7 @@ public class Board {
         return playableBlackTokens;
     }
 
-    public boolean validateMove(Token token, Position destination) {
-        return true;
-    }
-
-
-
+    // this method finds whether a white token is at a certain position
     public boolean isWhiteTokenAt(Position targetPosition){
         for (Token token: whiteTokens)
         {
@@ -189,6 +187,7 @@ public class Board {
             return false;
     }
 
+    // this method finds whether a black token is at a certain position
     public boolean isBlackTokenAt(Position targetPosition){
         for (Token token: blackTokens)
         {
@@ -201,6 +200,7 @@ public class Board {
         return false;
     }
 
+    // this method determines whether all the tokens hae been placed
     public boolean haveAllTokenBeenPlaced()
     {
         for (Token token: getPlayableWhiteToken())
@@ -218,6 +218,11 @@ public class Board {
         return true;
     }
 
+    // this method determines whether there are 3 tokens left of board
+    //0 -> both white and black token have three pieces left
+    // 1 -> white token has three pieces left
+    // 2-> black token has three pieces left
+    // 3 -> both black and white token have more than three pieces left
     public int haveThreeTokenLeftOnBoard()
     {
         int output;
@@ -261,6 +266,7 @@ public class Board {
         return output;
     }
 
+    // this method sets the jump capability of all playable white tokens
     public void setWhiteCanJump()
     {
         for (Token token: whiteTokens)
@@ -269,6 +275,7 @@ public class Board {
         }
     }
 
+    // this method sets the jump capability of all playable black tokens
     public void setBlackCanJump()
     {
         for (Token token: blackTokens)
@@ -277,6 +284,7 @@ public class Board {
         }
     }
 
+    // this method determines whether there is a mill
     public boolean determineMill(Position position, Token token)
     {
         // get neighbours
@@ -365,7 +373,7 @@ public class Board {
         return rowMill || columnMill;
     }
 
-
+    // this method finds the index [col, row] of a position with regards to map array.
     public int[] getColsAndRowsOf(Position position)
     {
         int numRows = map.length;
@@ -383,6 +391,7 @@ public class Board {
         return null; // Element not found
     }
 
+    // this method looks at the board and determines if a player has won
     public boolean isGameFinished(TokenColour colour)
     {
         if (getPlayableWhiteToken().size() <= 2 || getPlayableBlackToken().size() <= 2)
@@ -397,6 +406,7 @@ public class Board {
         return false;
     }
 
+    // this method looks at the board and determines who is a winner
     public TokenColour getWinningColour()
     {
         if (getPlayableBlackToken().size() <= 2)
@@ -413,6 +423,7 @@ public class Board {
         }
     }
 
+    // this method determine if black or white has any available moves to determine win condition
     public boolean hasAvailableMove(TokenColour tokenColour) {
         if (tokenColour == TokenColour.WHITE) {
             for (Token token : getPlayableWhiteToken()) {
@@ -449,6 +460,7 @@ public class Board {
         return false;
     }
 
+    // this method will return black or white playable token arrays depending on whose turn it is
     public List<Token> getTokensThisTurn(TokenColour tokenColour)
     {
         if (tokenColour == TokenColour.BLACK)
@@ -460,6 +472,7 @@ public class Board {
         }
     }
 
+    // this method will return black or white playable token arrays that have not been played
     public List<Token> getNonPlacedToken(TokenColour tokenColour)
     {
         List<Token> tokens = getTokensThisTurn(tokenColour);
@@ -475,6 +488,7 @@ public class Board {
         return returnTokens;
     }
 
+    // this method get positions with no tokens on it
     public List<Position> getEmptyPositions()
     {
         ArrayList<Position> emptyPositions = new ArrayList<>();
@@ -489,6 +503,7 @@ public class Board {
         return emptyPositions;
     }
 
+    // this method looks at a positions and get empty neighbours of the position
     public ArrayList<Position> getEmptyNeighboursOf(Position position)
     {
         ArrayList <Position> emptyNeighbours = new ArrayList<>();
@@ -503,6 +518,7 @@ public class Board {
         return emptyNeighbours;
     }
 
+    // returns the tokens that aren't part of a mill
     public ArrayList<Token> getTokenNotInMill(ArrayList<Token> tokens)
     {
         ArrayList <Token> tokenMill = new ArrayList<>();
