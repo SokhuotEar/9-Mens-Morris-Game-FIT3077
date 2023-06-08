@@ -1,21 +1,25 @@
 package sample.ninemensmorris;
+import java.io.IOException;
 import java.util.HashMap;
 
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
-import org.controlsfx.control.action.Action;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
-import javafx.scene.paint.Color;
 
 public class FxController implements Initializable {
 
@@ -174,6 +178,9 @@ public class FxController implements Initializable {
     @FXML
     private Button HintButton;
 
+    @FXML
+    private Button QuitButton;
+
 
 
     private Game game;
@@ -268,8 +275,15 @@ public class FxController implements Initializable {
 
 
         //Update Player name
+        if (data.getPlayerName1().length() >= 10 || data.getPlayerName1().length() >= 10)
+        {
+            data.setUserName1("Name is too long");
+            return;
+        }
+
         player1Text.setText(data.getPlayerName1());
         player2Text.setText(data.getPlayerName2());
+
 
     }
     private void setupPosition(Shape shape) {
@@ -338,6 +352,16 @@ public class FxController implements Initializable {
             //checkIfGameIsOver();
         });
 
+    }
+
+    public void setupQuitButton(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("WelcomeUI.fxml"));
+        Scene scene = new Scene(root);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(scene);
+        window.show();
     }
 
 

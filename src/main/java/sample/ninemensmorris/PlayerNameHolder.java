@@ -10,7 +10,6 @@ public class PlayerNameHolder {
 
     private PlayerNameHolder(){};
 
-
     public static  PlayerNameHolder getInstance(){
         return instance;
 

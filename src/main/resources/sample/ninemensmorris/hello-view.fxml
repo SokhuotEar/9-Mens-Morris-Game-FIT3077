@@ -82,7 +82,7 @@
             <Font name="Amatic SC Regular" size="30.0" />
          </font>
       </Text>
-      <Button layoutX="695.0" layoutY="910.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="103.0" text="QUIT" textFill="#b59c55">
+      <Button fx:id= "QuitButton" layoutX="695.0" layoutY="910.0" onAction="#setupQuitButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="103.0" text="QUIT" textFill="#b59c55">
          <font>
             <Font name="Algerian" size="20.0" />
          </font>
