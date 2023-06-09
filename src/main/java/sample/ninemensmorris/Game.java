@@ -41,8 +41,13 @@ public class Game {
     }
 
 
+    private void setUpBoard()
+    {
 
-    // determine whose turn it is
+    }
+
+
+
     public Player getPlayerTurn()
     {
         if (turn % 2 == 0)
@@ -55,14 +60,12 @@ public class Game {
         }
     }
 
-    // iterate turn
     public void iterateTurn()
     {
         turn++;
         updateGameStage();
     }
 
-    // returns a string describing whose turn it is
     public String getDisplayTurn()
     {
         if(hasMill){
@@ -73,7 +76,7 @@ public class Game {
     }
 
 
-    // execute a move
+
     public String executeMove(Token token, Position destination, Label MillText, Shape MillButton) {
 
         if (gameStage == GameStage.FINISHED)
@@ -163,7 +166,6 @@ public class Game {
     }
 
 
-    // determines if a game is over
     public Boolean isGameOver(Game game){
         //if game is over
         if (gameStage == GameStage.FINISHED)
@@ -173,7 +175,6 @@ public class Game {
         return false;
     }
 
-    // get the winner of the game
     public Player getWinner(){
         //get the winner
         return winner;
@@ -184,7 +185,6 @@ public class Game {
     }
 
 
-    // update the stage of the game
     public void updateGameStage()
     {
         if (gameStage == GameStage.INITIAL_PLACEMENT)
@@ -208,7 +208,6 @@ public class Game {
         System.out.println(gameStage);
     }
 
-    // set the winner for the game
     private void setWinner(TokenColour tokenColour)
     {
         if (tokenColour == TokenColour.BLACK)
@@ -233,7 +232,7 @@ public class Game {
     }
 
 
-    //
+
     public void switchToTutorialMode(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("TutorialMode.fxml"));
         Scene scene = new Scene(root);
@@ -244,12 +243,10 @@ public class Game {
         window.show();
     }
 
-    // determines if a mill is formed
     public boolean isHasMill() {
         return hasMill;
     }
 
-    // display all playable tokens as hints
     public void displayPlayableToken()
     {
 
@@ -285,7 +282,6 @@ public class Game {
         }
     }
 
-    // display all placeable positions as hints for a certain token
     public void displayPlaceablePosition(Token currentToken)
     {
         board.haveThreeTokenLeftOnBoard();
@@ -324,13 +320,10 @@ public class Game {
             }
         }
     }
-
-    // get display to reset shape colour
     public void resetShapeColour(){
         display.resetShapeColour();
     }
 
-    // returns display
     public Display getDisplay() {
         return display;
     }

@@ -30,13 +30,12 @@ public abstract class MoveAction {
         return false;
     }
 
-    // validate move
+
     public boolean validateMove(Board board, Token token, Position endingLocation)
     {
         return false;
     }
 
-    // returns error message if any
     public String getErrorMessage()
     {
         return errorMessage;

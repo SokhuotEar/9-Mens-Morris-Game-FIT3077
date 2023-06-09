@@ -286,8 +286,6 @@ public class FxController implements Initializable {
 
 
     }
-
-    // set on click positions for a position.
     private void setupPosition(Shape shape) {
         // set on-click event
         shape.setOnMouseClicked(mouseEvent -> {
@@ -356,7 +354,6 @@ public class FxController implements Initializable {
 
     }
 
-    // set on click for the quit button
     public void setupQuitButton(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("WelcomeUI.fxml"));
         Scene scene = new Scene(root);
@@ -368,7 +365,7 @@ public class FxController implements Initializable {
     }
 
 
-    // set on click event for tokens
+
     private void setupToken(Shape shape) {
         shape.setOnMouseClicked(mouseEvent -> {
 
@@ -380,7 +377,6 @@ public class FxController implements Initializable {
 
     }
 
-    // set on click event for hint button
     private void setupHintButton(Button button){
         button.setOnMouseClicked(mouseEvent -> {
             System.out.println("hintButtonPressed");
