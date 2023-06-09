@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ninemensmorris.InputPlayerDetailsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.ninemensmorris.InputPlayerDetailsController">
    <children>
       <Label fx:id="NameErrorMessage" layoutX="361.0" layoutY="34.0" text="Error Messgae" textFill="#a82525" visible="false"></Label>
       <Text fill="#ae9572" fontSmoothingType="LCD" layoutX="180.0" layoutY="200.0" stroke="#c5c1bc" strokeType="OUTSIDE" text="INPUT PLAYER DETAILS" textAlignment="CENTER" wrappingWidth="664.8033447265625">
